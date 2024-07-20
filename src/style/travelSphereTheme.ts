@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import travelSphereMixins from "./mixins";
 
 const travelSphereTheme = createTheme({

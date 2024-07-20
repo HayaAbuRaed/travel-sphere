@@ -1,7 +1,9 @@
 import { RouteObject } from "react-router-dom";
+import Layout from "../containers/Layout";
 
 const protectedRoutes: RouteObject = {
   path: "/me",
+  element: <Layout />,
   children: [
     {
       path: "",

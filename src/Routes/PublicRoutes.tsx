@@ -5,6 +5,7 @@ const publicRoutes: RouteObject = {
   children: [
     {
       path: "",
+      index: true,
       element: <h1>Landing Page</h1>,
     },
     {

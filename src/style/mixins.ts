@@ -1,6 +1,6 @@
-import { ThemeMixins } from "./types";
+import { AppThemeMixins } from "./types";
 
-const travelSphereMixins: ThemeMixins = {
+const travelSphereMixins: AppThemeMixins = {
   niceScroll: (width = 10) => {
     return {
       overflow: "auto",
