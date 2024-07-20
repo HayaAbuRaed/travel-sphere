@@ -1,0 +1,9 @@
+.loaderContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  background-color: #f5f5f5;
+}
