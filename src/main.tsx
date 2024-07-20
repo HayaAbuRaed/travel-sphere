@@ -3,11 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import TravelSphereThemeProvider from "./style/TravelSphereThemeProvider.tsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <TravelSphereThemeProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </TravelSphereThemeProvider>
+  <React.StrictMode>
+    <BrowserRouter>
+      <TravelSphereThemeProvider>
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </TravelSphereThemeProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );

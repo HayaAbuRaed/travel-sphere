@@ -1,8 +1,9 @@
 import { FC } from "react";
 import "./App.css";
+import AppRoutes from "./Routes/AppRoutes";
 
 const App: FC = () => {
-  return <>Hello TravelSphere</>;
+  return <AppRoutes />;
 };
 
 export default App;
