@@ -1,5 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import Layout from "../containers/Layout";
+import Home from "src/pages/Home";
 
 const protectedRoutes: RouteObject = {
   path: "/me",
@@ -8,7 +9,7 @@ const protectedRoutes: RouteObject = {
     {
       path: "",
       index: true,
-      element: <h1>Home</h1>,
+      element: <Home />,
     },
   ],
 };
