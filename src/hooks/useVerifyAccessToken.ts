@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { login, logout } from "src/features/user";
 import { useAppDispatch } from "src/store/hooks";
+import checkTokenExpiration from "src/utils/checkTokenExpiration";
 import getJwtData from "src/utils/getJwtData";
 
 const useVerifyAccessToken = () => {
@@ -20,7 +21,7 @@ const useVerifyAccessToken = () => {
 
       const tokenPayload = getJwtData(accessToken);
 
-      if (tokenPayload.expirationDate < new Date()) {
+      if (checkTokenExpiration(tokenPayload.expirationDate)) {
         dispatch(logout());
         setIsAuthenticating(false);
         return;

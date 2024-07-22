@@ -3,7 +3,7 @@ export interface UserState {
   givenName: string;
   familyName: string;
   userType: "Admin" | "User" | "";
-  expirationDate: Date;
+  expirationDate: number;
   isAuthenticated: boolean;
 }
 

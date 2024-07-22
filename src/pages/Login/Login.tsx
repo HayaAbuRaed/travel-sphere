@@ -1,10 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import logo from "src/assets/logoo.png";
+import logo from "src/assets/logo.png";
 import LoginForm from "./components/LoginForm";
+import useCheckAuthStatus from "./hooks/useCheckAuthStatus";
 import styles from "./style.module.css";
 
 const Login: FC = () => {
+  useCheckAuthStatus();
+
   return (
     <Stack className={styles.mainContainer}>
       <Stack className={styles.formContainer}>

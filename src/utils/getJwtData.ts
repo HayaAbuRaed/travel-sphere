@@ -12,7 +12,7 @@ const getJwtData = (token: string): LoginPayload => {
     givenName: given_name,
     familyName: family_name,
     userType: user_type,
-    expirationDate: new Date(exp * 1000),
+    expirationDate: exp,
   };
 };
 

@@ -7,8 +7,6 @@ import { useAppSelector } from "src/store/hooks";
 const Home = () => {
   const { givenName, familyName } = useAppSelector(selectUser);
 
-  console.log(givenName, familyName);
-
   const dispatch = useAppDispatch();
 
   const handleClick = () => {

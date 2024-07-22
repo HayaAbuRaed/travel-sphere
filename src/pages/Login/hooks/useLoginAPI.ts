@@ -1,12 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN_KEY } from "src/constants/localStorage";
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
-import { useAppDispatch } from "src/store/hooks";
-import { loginApi } from "../API";
 import { login } from "src/features/user";
-import { JwtPayload } from "src/types/authentication";
+import { useAppDispatch } from "src/store/hooks";
+import getJwtData from "src/utils/getJwtData";
+import { loginApi } from "../API";
 
 const useLoginAPI = () => {
   const navigate = useNavigate();
@@ -16,21 +15,13 @@ const useLoginAPI = () => {
   const { mutateAsync: logUserIn, isPending } = useMutation({
     mutationFn: loginApi,
     onSuccess: (res) => {
-      localStorage.setItem(ACCESS_TOKEN_KEY, res.authentication);
+      const token = res.authentication;
 
-      const payload = jwtDecode<JwtPayload>(res.authentication);
+      localStorage.setItem(ACCESS_TOKEN_KEY, token);
 
-      const { user_id, given_name, family_name, user_type, exp } = payload;
+      const payload = getJwtData(token);
 
-      dispatch(
-        login({
-          userId: user_id,
-          givenName: given_name,
-          familyName: family_name,
-          userType: user_type,
-          expirationDate: new Date(exp * 1000),
-        })
-      );
+      dispatch(login(payload));
 
       navigate("/me");
     },

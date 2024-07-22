@@ -8,7 +8,7 @@ const initialState: UserState = {
   givenName: "",
   familyName: "",
   userType: "",
-  expirationDate: new Date(),
+  expirationDate: 0,
   isAuthenticated: false,
 };
 
