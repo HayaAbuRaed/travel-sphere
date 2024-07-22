@@ -1,8 +1,14 @@
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
 import { useAppDispatch } from "src/store/hooks";
+import selectUser from "src/features/user/selectors";
+import { useAppSelector } from "src/store/hooks";
 
 // temporary component to test redux setup
 const Home = () => {
+  const { givenName, familyName } = useAppSelector(selectUser);
+
+  console.log(givenName, familyName);
+
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
@@ -15,7 +21,9 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>
+        Hello {givenName} {familyName}
+      </h1>
       <button onClick={handleClick}>show</button>
     </>
   );
