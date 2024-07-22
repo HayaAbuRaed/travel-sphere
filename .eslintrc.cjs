@@ -20,5 +20,6 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-unnecessary-type-constraint": "off",
     "react/react-in-jsx-scope": "off",
+    "react-refresh/only-export-components": "off",
   },
 };

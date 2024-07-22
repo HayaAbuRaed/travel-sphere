@@ -1,6 +1,8 @@
+import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import Layout from "../containers/Layout";
-import Home from "src/pages/Home";
+
+const Layout = lazy(() => import("src/containers/Layout"));
+const Home = lazy(() => import("src/pages/Home"));
 
 const protectedRoutes: RouteObject = {
   path: "/me",
