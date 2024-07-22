@@ -6,7 +6,7 @@ import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
 import { useAppDispatch } from "src/store/hooks";
 import { loginApi } from "../API";
 import { login } from "src/features/user";
-import { JwtPayload } from "../types";
+import { JwtPayload } from "src/types/authentication";
 
 const useLoginAPI = () => {
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
+import AuthenticationRoute from "./AuthenticationRoute";
 
 const Layout = lazy(() => import("src/containers/Layout"));
 const Home = lazy(() => import("src/pages/Home"));
@@ -9,9 +10,14 @@ const protectedRoutes: RouteObject = {
   element: <Layout />,
   children: [
     {
-      path: "",
-      index: true,
-      element: <Home />,
+      element: <AuthenticationRoute />,
+      children: [
+        {
+          path: "",
+          index: true,
+          element: <Home />,
+        },
+      ],
     },
   ],
 };
