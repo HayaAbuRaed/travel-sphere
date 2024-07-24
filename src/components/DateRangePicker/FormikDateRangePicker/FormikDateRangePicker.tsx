@@ -4,6 +4,7 @@ import { DateRangePicker, RangeKeyDict } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import theme from "src/style/travelSphereTheme";
+import "../style.css";
 
 export interface FormikDateRangePickerProps {
   name: string;
@@ -32,6 +33,7 @@ const FormikDateRangePicker: FC<FormikDateRangePickerProps> = ({ name }) => {
       ]}
       onChange={handleSelect}
       minDate={new Date()}
+      // className={styles.dateRangePicker}
     />
   );
 };
