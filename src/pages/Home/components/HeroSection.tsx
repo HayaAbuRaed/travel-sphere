@@ -2,11 +2,12 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import styles from "../style.module.css";
 import SearchBar from "src/components/SearchBar";
+import SparkIcon from "@mui/icons-material/AutoAwesomeOutlined";
 
 const HeroSection: FC = () => {
   return (
-    <Grid item xs={12}>
-      <Box position={"relative"} className={styles.coverContainer}>
+    <Grid item xs={12} position={"relative"}>
+      <Box className={styles.coverContainer}>
         <Stack
           className={styles.overlay}
           spacing={2}
@@ -20,12 +21,21 @@ const HeroSection: FC = () => {
           >
             Simpler, Smarter Travel
           </Typography>
-          <Typography sx={{ fontSize: { xs: "0.8rem", sm: "1rem" } }}>
-            Book, organize and control your travel, all in one place ✨
+          <Typography
+            sx={{ fontSize: { xs: "0.8rem", sm: "1rem" } }}
+            display="flex"
+            alignItems="center"
+            gap={0.5}
+          >
+            Book, organize and control your travel, all in one place
+            <SparkIcon fontSize="small" color="primary" />
           </Typography>
         </Stack>
       </Box>
-      <SearchBar />
+
+      <Box pt={{ xs: 25, md: 32 }}>
+        <SearchBar />
+      </Box>
     </Grid>
   );
 };

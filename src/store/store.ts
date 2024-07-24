@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import searchQueriesReducer from "src/features/searchQueries/searchQueriesSlice";
 import snackbarReducer from "src/features/snackbar/snackbarSlice";
 import userReducer from "src/features/user/userSlice";
 
@@ -6,6 +7,7 @@ const store = configureStore({
   reducer: {
     snackbar: snackbarReducer,
     user: userReducer,
+    searchQueries: searchQueriesReducer,
   },
 });
 

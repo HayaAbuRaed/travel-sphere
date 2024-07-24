@@ -1,4 +1,4 @@
-import { SearchRequest } from "./types";
+import { SearchRequest } from "src/types/search";
 
 export const getQueriesString = (payload: SearchRequest): string => {
   const queryNames = Object.keys(payload);
@@ -8,8 +8,6 @@ export const getQueriesString = (payload: SearchRequest): string => {
   type QueryName = keyof SearchRequest;
 
   queryNames.forEach((queryName) => {
-    if (queryName === "dateRange") return;
-
     const queryValue = payload[queryName as QueryName];
 
     if (queryValue) queryString += `${queryName}=${queryValue}&`;

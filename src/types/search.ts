@@ -28,3 +28,13 @@ export interface Amenity {
   name: string;
   description: string;
 }
+
+export interface DateRange {
+  startDate: Date;
+  endDate: Date;
+}
+
+export interface FormikSearchPayload
+  extends Omit<SearchRequest, "checkInDate" | "checkOutDate"> {
+  dateRange: DateRange;
+}

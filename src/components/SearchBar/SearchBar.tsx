@@ -10,9 +10,7 @@ import { StyledTextField } from "./styled";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
 
 const SearchBar: FC = () => {
-  const { formikProps, searchResults } = useSearchForm();
-
-  console.log(searchResults);
+  const { formikProps } = useSearchForm();
 
   return (
     <FormikProvider value={formikProps}>
@@ -26,6 +24,7 @@ const SearchBar: FC = () => {
           columnGap={1.5}
           rowGap={1}
           maxWidth={{ xs: "600px", md: "1200px" }}
+          zIndex={1000}
         >
           <FieldWrapper md icon={<HotelIcon />}>
             <StyledTextField

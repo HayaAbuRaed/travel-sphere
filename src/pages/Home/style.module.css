@@ -6,8 +6,8 @@
 }
 
 .coverContainer {
-  background: url("../../assets/homeCover111.jpg") no-repeat center / cover
-    fixed;
+  background: url("../../assets/homeCover2.jpg") no-repeat bottom / cover fixed;
+  position: absolute;
 }
 
 .overlay {
@@ -22,7 +22,7 @@
     rgba(0, 0, 0, 0.8856792717086834) 100%
   );
   color: #f5f5f5;
-  padding-top: 3.2em;
+  padding-top: 5em;
 }
 
 .overlay h1 {
