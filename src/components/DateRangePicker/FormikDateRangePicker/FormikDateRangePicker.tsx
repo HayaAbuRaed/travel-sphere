@@ -31,6 +31,7 @@ const FormikDateRangePicker: FC<FormikDateRangePickerProps> = ({ name }) => {
         },
       ]}
       onChange={handleSelect}
+      minDate={new Date()}
     />
   );
 };

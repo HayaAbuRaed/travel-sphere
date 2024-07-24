@@ -1,5 +1,7 @@
 import HotelIcon from "@mui/icons-material/BedOutlined";
-import { Button, Grid } from "@mui/material";
+import SearchIcon from "@mui/icons-material/SearchOutlined";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Grid } from "@mui/material";
 import { Form, FormikProvider } from "formik";
 import { FC } from "react";
 import DatePicker from "./components/DatePicker";
@@ -7,10 +9,11 @@ import FieldWrapper from "./components/FieldWrapper";
 import RoomGuestSelector from "./components/RoomGuestSelector";
 import useSearchForm from "./hooks/useSearchForm";
 import { StyledTextField } from "./styled";
-import SearchIcon from "@mui/icons-material/SearchOutlined";
 
 const SearchBar: FC = () => {
   const { formikProps } = useSearchForm();
+
+  const { isValid } = formikProps;
 
   return (
     <FormikProvider value={formikProps}>
@@ -39,13 +42,14 @@ const SearchBar: FC = () => {
           <RoomGuestSelector />
 
           <Grid item xs={12} md={1.2} lg={1}>
-            <Button
+            <LoadingButton
               type="submit"
               variant="contained"
               color="info"
               disableElevation
               startIcon={<SearchIcon />}
               fullWidth
+              disabled={!isValid}
               sx={{
                 textTransform: "none",
                 ".MuiButton-startIcon": { mr: 0.35 },
@@ -53,7 +57,7 @@ const SearchBar: FC = () => {
               }}
             >
               Search
-            </Button>
+            </LoadingButton>
           </Grid>
         </Grid>
       </Form>

@@ -3,6 +3,7 @@ import { selectSearchQueries, submitSearch } from "src/features/searchQueries";
 import { useAppDispatch, useAppSelector } from "src/store/hooks";
 import { FormikSearchPayload } from "src/types/search";
 import { deserializeDateRange, serializeDateRange } from "src/utils/search";
+import validationSchema from "../schema";
 
 const useSearchForm = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ const useSearchForm = () => {
       ...formValues,
       dateRange: deserializeDateRange(dateRange),
     },
+    validationSchema,
     onSubmit,
   });
 

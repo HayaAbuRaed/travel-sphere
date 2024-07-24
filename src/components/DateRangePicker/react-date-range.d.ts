@@ -15,6 +15,7 @@ declare module "react-date-range" {
   export interface DateRangePickerProps {
     ranges: Range[];
     onChange: (ranges: RangeKeyDict) => void;
+    minDate?: Date;
   }
 
   export const DateRangePicker: ComponentType<DateRangePickerProps>;
