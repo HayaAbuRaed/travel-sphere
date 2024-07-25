@@ -1,9 +1,13 @@
 import { Grid, Stack } from "@mui/material";
 import { FC } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import HotelCard from "src/components/HotelCard";
+import { featuredDealsCarouselProps } from "../constants";
 import useGetFeaturedDeals from "../hook/useGetFeaturedDeals";
 import styles from "../style.module.css";
 import { mapDealToHotel } from "../utils";
+import "./carousel.css";
 
 const FeaturedDeals: FC = () => {
   const { featuredDeals, isFetching } = useGetFeaturedDeals();
@@ -17,10 +21,22 @@ const FeaturedDeals: FC = () => {
   }
 
   return (
-    <Grid container item xs={12} px={6} columnGap={1.5}>
-      {featuredDeals.map((deal) => (
-        <Grid item xs>
-          <HotelCard hotel={mapDealToHotel(deal)} action={() => {}}>
+    <Grid
+      container
+      item
+      xs={12}
+      pb={4}
+      px={{ xs: 3, md: 6 }}
+      columnGap={1.5}
+      position="relative"
+    >
+      <Carousel {...featuredDealsCarouselProps}>
+        {featuredDeals.map((deal) => (
+          <HotelCard
+            key={`deal${deal.hotelId}`}
+            hotel={mapDealToHotel(deal)}
+            action={() => {}}
+          >
             <Stack className={styles.overViewContainer}>
               <HotelCard.Rating />
               <HotelCard.PriceSegment />
@@ -30,8 +46,8 @@ const FeaturedDeals: FC = () => {
             <HotelCard.Description />
             <HotelCard.InfoCard showHotel />
           </HotelCard>
-        </Grid>
-      ))}
+        ))}
+      </Carousel>
     </Grid>
   );
 };

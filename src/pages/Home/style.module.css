@@ -38,3 +38,29 @@
   align-items: center;
   gap: 0.5rem;
 }
+
+.carousel {
+  width: 100%;
+  gap: 1rem;
+}
+
+.carouselItem {
+  padding-right: 1rem;
+}
+.carouselItem .react-multi-carousel-dot--active button {
+  background: red !important;
+}
+
+.react-multi-carousel-dot--active button {
+  background: #ffe500;
+}
+
+.react-multi-carousel-dot button {
+  border-color: #aaa;
+}
+
+@media screen and (max-width: 464px) {
+  .carouselItem {
+    padding-right: 0;
+  }
+}
