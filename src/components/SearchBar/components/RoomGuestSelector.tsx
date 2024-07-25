@@ -2,10 +2,10 @@ import PeopleIcon from "@mui/icons-material/PeopleAltOutlined";
 import { Grid, Menu, Stack, Typography } from "@mui/material";
 import { useFormikContext } from "formik";
 import { FC, useState } from "react";
-import { FormikSearchPayload } from "../types";
 import FieldWrapper from "./FieldWrapper";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CounterField from "./CounterField";
+import { FormikSearchPayload } from "src/types/search";
 
 const RoomGuestSelector: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
