@@ -21,7 +21,7 @@ const HotelCard = ({ children, hotel, action }: HotelCardProps) => {
         <CardMedia
           sx={{ height: 200 }}
           image={hotel.photoUrl}
-          title="green iguana"
+          title={hotel.hotelName}
         />
 
         <CardContent>{children}</CardContent>

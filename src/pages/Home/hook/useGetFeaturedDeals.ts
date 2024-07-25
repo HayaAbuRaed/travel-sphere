@@ -3,6 +3,7 @@ import { getFeaturedDeals } from "../API";
 import { useAppDispatch } from "src/store/hooks";
 import { useEffect } from "react";
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
+import { FEATURED_DEALS_QUERY_KEY } from "../constants";
 
 const useGetFeaturedDeals = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,7 @@ const useGetFeaturedDeals = () => {
     error,
   } = useQuery({
     queryFn: getFeaturedDeals,
-    queryKey: ["featuredDeals"],
+    queryKey: [FEATURED_DEALS_QUERY_KEY],
   });
 
   useEffect(() => {

@@ -27,11 +27,11 @@ export interface Hotel {
   hotelName: string;
   cityName: string;
   starRating: number;
-  discount: number;
+  discount?: number;
   photoUrl: string;
   description?: string;
-  priceLowBound?: number;
-  priceHighBound?: number;
+  priceLowerBound?: number;
+  priceUpperBound?: number;
   title?: string;
   originalRoomPrice?: number;
 }

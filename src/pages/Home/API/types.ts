@@ -10,3 +10,14 @@ export interface FeaturedDealResponse {
   description: string;
   roomPhotoUrl: string;
 }
+
+export interface RecentlyVisitedResponse {
+  hotelId: number;
+  hotelName: string;
+  starRating: number;
+  visitDate: string;
+  cityName: string;
+  thumbnailUrl: string;
+  priceLowerBound: number;
+  priceUpperBound: number;
+}
