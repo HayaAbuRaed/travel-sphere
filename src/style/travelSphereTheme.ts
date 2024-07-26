@@ -10,6 +10,9 @@ const travelSphereTheme = createTheme({
     secondary: {
       main: "#faa935",
     },
+    background: {
+      paper: "#fafafa",
+    },
   },
   typography: {
     fontFamily: "Sora, sans-serif",

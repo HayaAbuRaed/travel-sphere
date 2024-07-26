@@ -1,0 +1,15 @@
+.react-multi-carousel-dot--active button {
+  background: #ffe500;
+}
+
+.react-multi-carousel-dot button {
+  border-color: #aaa;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: 4px;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: 4px;
+}

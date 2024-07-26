@@ -7,7 +7,6 @@ export interface UserState {
   isAuthenticated: boolean;
 }
 
-export interface LoginPayload
-  extends Omit<UserState, "isAuthenticated" | "userType"> {
-  userType: "Admin" | "User";
+export interface LoginPayload extends Omit<UserState, "isAuthenticated"> {
+  // userType: "Admin" | "User";
 }

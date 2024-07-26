@@ -1,0 +1,17 @@
+.discountChip {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: fit-content;
+  padding-block: 3px;
+  color: #fafafa;
+  font-size: 0.75rem;
+}
+
+.showTwoLines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
