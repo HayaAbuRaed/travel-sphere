@@ -6,7 +6,7 @@
 }
 
 .coverContainer {
-  background: url("src/assets/homeCover.jpg") no-repeat bottom / cover fixed;
+  background: no-repeat bottom / cover fixed;
   position: absolute;
 }
 

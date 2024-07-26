@@ -39,11 +39,11 @@ const LoginForm = () => {
           disabled={!dirty || !isValid}
           type="submit"
           onClick={submitForm}
-          className={styles.submitButton}
           startIcon={<LoginIcon />}
           variant="contained"
           loadingPosition="start"
           aria-label="Login"
+          className={styles.submitButton}
         >
           Log in
         </LoadingButton>
