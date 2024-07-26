@@ -8,6 +8,7 @@ import useGetFeaturedDeals from "../hook/useGetFeaturedDeals";
 import styles from "../style.module.css";
 import { mapDealToHotel } from "../utils";
 import "./carousel.css";
+import SectionTitle from "./SectionTitle";
 
 const FeaturedDeals: FC = () => {
   const { featuredDeals, isFetching } = useGetFeaturedDeals();
@@ -30,6 +31,8 @@ const FeaturedDeals: FC = () => {
       columnGap={1.5}
       position="relative"
     >
+      <SectionTitle title="featured deals" />
+
       <Carousel {...featuredDealsCarouselProps}>
         {featuredDeals.map((deal) => (
           <HotelCard

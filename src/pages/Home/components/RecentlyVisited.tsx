@@ -7,6 +7,7 @@ import { recentlyVisitedCarouselProps } from "../constants";
 import useGetRecentlyVisitedHotels from "../hook/useGetRecentlyVisitedHotels";
 import { formatDisplayDate, mapRecentlyVisitedHotelToHotel } from "../utils";
 import "./carousel.css";
+import SectionTitle from "./SectionTitle";
 
 const RecentlyVisited: FC = () => {
   const { recentHotels, isFetching } = useGetRecentlyVisitedHotels();
@@ -25,6 +26,8 @@ const RecentlyVisited: FC = () => {
       position="relative"
       pb={4}
     >
+      <SectionTitle title="recently visited hotels" />
+
       <Carousel {...recentlyVisitedCarouselProps}>
         {recentHotels.map((hotel) => (
           <Grid
