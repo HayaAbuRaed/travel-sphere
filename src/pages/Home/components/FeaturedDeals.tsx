@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,6 +8,7 @@ import useGetFeaturedDeals from "../hook/useGetFeaturedDeals";
 import styles from "../style.module.css";
 import { mapDealToHotel } from "../utils";
 import "./carousel.css";
+import CarouselSkeleton from "./CarouselSkeleton";
 import SectionTitle from "./SectionTitle";
 
 const FeaturedDeals: FC = () => {
@@ -23,14 +24,11 @@ const FeaturedDeals: FC = () => {
     >
       <SectionTitle title="featured deals" />
 
-      <Carousel {...featuredDealsCarouselProps}>
-        {isFetching &&
-          Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={index} variant="rectangular" height={450} />
-          ))}
+      {isFetching && <CarouselSkeleton />}
 
-        {featuredDeals &&
-          featuredDeals.map((deal) => (
+      {featuredDeals && (
+        <Carousel {...featuredDealsCarouselProps}>
+          {featuredDeals.map((deal) => (
             <HotelCard
               key={`deal${deal.hotelId}`}
               hotel={mapDealToHotel(deal)}
@@ -46,7 +44,8 @@ const FeaturedDeals: FC = () => {
               <HotelCard.InfoCard showHotel />
             </HotelCard>
           ))}
-      </Carousel>
+        </Carousel>
+      )}
     </Grid>
   );
 };

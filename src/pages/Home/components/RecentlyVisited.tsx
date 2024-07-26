@@ -1,4 +1,4 @@
-import { Grid, Skeleton } from "@mui/material";
+import { Grid } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,6 +8,7 @@ import useGetRecentlyVisitedHotels from "../hook/useGetRecentlyVisitedHotels";
 import styles from "../style.module.css";
 import { formatDisplayDate, mapRecentlyVisitedHotelToHotel } from "../utils";
 import "./carousel.css";
+import CarouselSkeleton from "./CarouselSkeleton";
 import SectionTitle from "./SectionTitle";
 
 const RecentlyVisited: FC = () => {
@@ -23,14 +24,11 @@ const RecentlyVisited: FC = () => {
     >
       <SectionTitle title="recently visited hotels" />
 
-      <Carousel {...recentlyVisitedCarouselProps}>
-        {isFetching &&
-          Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={index} variant="rectangular" height={400} />
-          ))}
+      {isFetching && <CarouselSkeleton />}
 
-        {recentHotels &&
-          recentHotels.map((hotel) => (
+      {recentHotels && (
+        <Carousel {...recentlyVisitedCarouselProps}>
+          {recentHotels.map((hotel) => (
             <Grid
               item
               xs
@@ -48,7 +46,8 @@ const RecentlyVisited: FC = () => {
               </HotelCard>
             </Grid>
           ))}
-      </Carousel>
+        </Carousel>
+      )}
     </Grid>
   );
 };

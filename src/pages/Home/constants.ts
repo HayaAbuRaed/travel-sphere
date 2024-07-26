@@ -60,4 +60,5 @@ export const recentlyVisitedCarouselProps = {
   partialVisible: true,
   removeArrowOnDeviceType: ["tablet", "mobile"],
   renderDotsOutside: true,
+  infinite: false,
 };
