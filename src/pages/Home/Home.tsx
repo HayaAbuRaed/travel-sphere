@@ -4,6 +4,7 @@ import HeroSection from "./components/HeroSection";
 import FeaturedDeals from "./components/FeaturedDeals";
 import RecentlyVisited from "./components/RecentlyVisited";
 import CarouselTester from "./components/Carousel";
+import TrendingDestinations from "./components/TrendingDestinations";
 
 const Home: FC = () => {
   return (
@@ -11,6 +12,7 @@ const Home: FC = () => {
       <HeroSection />
       <CarouselTester />
       <FeaturedDeals />
+      <TrendingDestinations />
       <RecentlyVisited />
     </Grid>
   );
