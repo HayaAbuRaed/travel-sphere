@@ -9,6 +9,7 @@ import FieldWrapper from "./components/FieldWrapper";
 import RoomGuestSelector from "./components/RoomGuestSelector";
 import useSearchForm from "./hooks/useSearchForm";
 import { StyledTextField } from "./styled";
+import styles from "./style.module.css";
 
 const SearchBar: FC = () => {
   const { formikProps } = useSearchForm();
@@ -17,17 +18,12 @@ const SearchBar: FC = () => {
 
   return (
     <FormikProvider value={formikProps}>
-      <Form style={{ display: "flex", justifyContent: "center" }}>
+      <Form className={styles.searchForm}>
         <Grid
           container
           sx={{ backgroundColor: "primary.main" }}
-          borderRadius={1}
-          py={1}
-          px={1.2}
-          columnGap={1.5}
-          rowGap={1}
           maxWidth={{ xs: "600px", md: "1200px" }}
-          zIndex={1000}
+          className={styles.searchFieldsContainer}
         >
           <FieldWrapper md icon={<HotelIcon />}>
             <StyledTextField

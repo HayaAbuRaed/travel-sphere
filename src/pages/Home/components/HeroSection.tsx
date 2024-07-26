@@ -1,8 +1,8 @@
+import SparkIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import styles from "../style.module.css";
 import SearchBar from "src/components/SearchBar";
-import SparkIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import styles from "../style.module.css";
 
 const HeroSection: FC = () => {
   return (
@@ -10,9 +10,8 @@ const HeroSection: FC = () => {
       <Box className={styles.coverContainer}>
         <Stack
           className={styles.overlay}
-          spacing={2}
-          pr={{ xs: 1, sm: 14 }}
-          pl={{ xs: 4, md: 6 }}
+          gap={2}
+          p={{ xs: "4em 0.5em 0 2em", md: "6.5em 7em 0 3em" }}
         >
           <Typography
             variant="h4"
@@ -21,14 +20,9 @@ const HeroSection: FC = () => {
           >
             Simpler, Smarter Travel
           </Typography>
-          <Typography
-            sx={{ fontSize: { xs: "0.8rem", sm: "1rem" } }}
-            display="flex"
-            alignItems="center"
-            gap={0.5}
-          >
+          <Typography sx={{ fontSize: { xs: "0.8rem", sm: "1rem" } }}>
             Book, organize and control your travel, all in one place
-            <SparkIcon fontSize="small" color="primary" />
+            <SparkIcon color="primary" sx={{ pt: 1, pl: 1 }} />
           </Typography>
         </Stack>
       </Box>

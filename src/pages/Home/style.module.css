@@ -6,7 +6,7 @@
 }
 
 .coverContainer {
-  background: url("../../assets/homeCover2.jpg") no-repeat bottom / cover fixed;
+  background: url("src/assets/homeCover.jpg") no-repeat bottom / cover fixed;
   position: absolute;
 }
 
@@ -22,7 +22,7 @@
     rgba(0, 0, 0, 0.8856792717086834) 100%
   );
   color: #f5f5f5;
-  padding-top: 5em;
+  /* padding-top: 6em; */
 }
 
 .overlay h1 {
@@ -39,6 +39,12 @@
   gap: 0.5rem;
 }
 
+.sectionContainer {
+  padding-bottom: 2rem;
+  column-gap: 0.75rem;
+  position: relative;
+}
+
 .carousel {
   width: 100%;
   gap: 1rem;
@@ -46,17 +52,6 @@
 
 .carouselItem {
   padding-right: 1rem;
-}
-.carouselItem .react-multi-carousel-dot--active button {
-  background: red !important;
-}
-
-.react-multi-carousel-dot--active button {
-  background: #ffe500;
-}
-
-.react-multi-carousel-dot button {
-  border-color: #aaa;
 }
 
 @media screen and (max-width: 464px) {

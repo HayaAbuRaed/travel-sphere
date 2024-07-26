@@ -19,12 +19,18 @@ const RoomGuestSelector: FC = () => {
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) =>
     setAnchorEl(event.currentTarget);
 
+  const addTrailingS = (value: number, word: string) => {
+    return value > 1 ? `${word}s` : word;
+  };
+
   return (
     <>
       <FieldWrapper md icon={<PeopleIcon />} onClick={handleOpenMenu} pointer>
         <Stack width="100%" flexDirection="row" gap={1}>
           <Typography variant="body2" sx={{ wordSpacing: 3 }}>
-            {adults} adults • {children} children • {numberOfRooms} rooms
+            {adults} {addTrailingS(adults, "adult")} •&nbsp;
+            {children} {children === 1 ? "child" : "children"} •&nbsp;
+            {numberOfRooms} {addTrailingS(numberOfRooms, "room")}
           </Typography>
 
           <ExpandMoreIcon fontSize="small" sx={{ ml: "auto" }} />

@@ -24,6 +24,7 @@ const useLoginAPI = () => {
       dispatch(login(payload));
 
       navigate("/me");
+      window.location.reload();
     },
     onError: () => {
       dispatch(

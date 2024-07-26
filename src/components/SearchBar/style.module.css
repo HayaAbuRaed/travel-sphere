@@ -1,0 +1,13 @@
+.searchForm {
+  display: flex;
+  justify-content: center;
+  padding-inline: 1rem;
+}
+
+.searchFieldsContainer {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  column-gap: 0.75rem;
+  row-gap: 0.5rem;
+  z-index: 1000;
+}

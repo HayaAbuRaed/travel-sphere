@@ -16,7 +16,10 @@ const useGetRecentlyVisitedHotels = () => {
     isFetching,
     error,
   } = useQuery({
-    queryFn: () => getRecentlyVisited(userId),
+    queryFn: () => {
+      console.log(userId);
+      return getRecentlyVisited(userId);
+    },
     queryKey: [RECENTLY_VISITED_QUERY_KEY, userId],
   });
 
