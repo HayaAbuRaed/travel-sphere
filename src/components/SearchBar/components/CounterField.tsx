@@ -2,7 +2,7 @@ import { Button, ButtonProps, Grid, Stack, Typography } from "@mui/material";
 import { useFormikContext } from "formik";
 import { FC } from "react";
 import { StyledTextField } from "../styled";
-import { FormikSearchPayload } from "../types";
+import { FormikSearchPayload } from "src/types/search";
 
 export interface CounterFieldProps {
   name: keyof FormikSearchPayload;
@@ -28,11 +28,11 @@ const CounterField: FC<CounterFieldProps> = ({
   const { setFieldValue, values } = useFormikContext<FormikSearchPayload>();
 
   const handleIncrement = () => {
-    setFieldValue(name, (values[name] as number) + 1);
+    setFieldValue(name as string, (values[name] as number) + 1);
   };
 
   const handleDecrement = () => {
-    setFieldValue(name, (values[name] as number) - 1);
+    setFieldValue(name as string, (values[name] as number) - 1);
   };
 
   const incrementDisabled = preventIncrementOn === values[name];
@@ -43,7 +43,7 @@ const CounterField: FC<CounterFieldProps> = ({
     <Grid item container alignItems="center" columnGap={0.5}>
       <Grid item xs={5.5}>
         <Typography variant="subtitle2" textTransform="capitalize">
-          {displayName ?? name}
+          {displayName ?? (name as string)}
         </Typography>
       </Grid>
 

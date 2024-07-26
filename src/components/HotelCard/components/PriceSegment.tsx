@@ -10,7 +10,7 @@ const PriceSegment: FC = () => {
         variant="h6"
         color={discount === 1 ? "text.primary" : "#e53935"}
       >
-        ${originalPrice! * discount}
+        ${originalPrice! * (discount ?? 1)}
       </Typography>
 
       <Typography

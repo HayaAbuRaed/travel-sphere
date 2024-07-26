@@ -8,7 +8,7 @@ const DiscountChip: FC = () => {
 
   return (
     <Chip
-      label={`${discount * 100}% off`}
+      label={`${discount ?? 0 * 100}% off`}
       color="secondary"
       className={styles.discountChip}
     />
