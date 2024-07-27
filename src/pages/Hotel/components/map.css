@@ -1,0 +1,8 @@
+.leaflet-container .leaflet-control-attribution {
+  display: none;
+}
+
+.leaflet-bar a {
+  color: #faa935;
+  background-color: #f5f5f5;
+}
