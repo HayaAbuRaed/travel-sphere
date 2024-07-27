@@ -8,7 +8,7 @@ const HotelInfo: FC<HotelInfoProps> = ({ hotel }) => {
   const { hotelName, starRating, location, description, amenities } = hotel;
 
   return (
-    <Grid container item xs={12} gap={1.75}>
+    <Grid container item direction="column" xs={12} gap={1.75}>
       <Box>
         <Rating
           readOnly

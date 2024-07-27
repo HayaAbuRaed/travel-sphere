@@ -1,3 +1,4 @@
+import { LatLngExpression } from "leaflet";
 import { HotelResponse, ReviewResponse } from "./API/types";
 
 export interface IdInterface {
@@ -14,6 +15,11 @@ export interface ReviewProps extends IdInterface {}
 
 export interface ReviewSegmentProps {
   review: ReviewResponse;
+}
+
+export interface MapProps {
+  position: LatLngExpression;
+  label?: string;
 }
 
 export interface GalleryPattern {

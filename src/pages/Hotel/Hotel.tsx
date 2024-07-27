@@ -1,17 +1,12 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
+import { LatLngExpression } from "leaflet";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
 import Gallery from "./components/Gallery";
 import HotelInfo from "./components/HotelInfo";
 import ReviewsList from "./components/ReviewsList";
 import useGetHotel from "./hooks/useGetHotel";
-import { LatLngExpression } from "leaflet";
-import { MapContainer } from "react-leaflet/MapContainer";
-import { Marker } from "react-leaflet/Marker";
-import { Popup } from "react-leaflet/Popup";
-import { TileLayer } from "react-leaflet/TileLayer";
-import "leaflet/dist/leaflet.css";
-import "./components/map.css";
+import Map from "./components/Map";
 
 const Hotel: FC = () => {
   const { id: paramsId } = useParams();
@@ -46,26 +41,7 @@ const Hotel: FC = () => {
           justifyContent="space-between"
         >
           <ReviewsList id={id} />
-
-          <MapContainer
-            center={position}
-            zoom={13}
-            scrollWheelZoom={false}
-            style={{
-              borderRadius: 4,
-              border: "1px solid #ccc",
-            }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}>
-              <Popup>
-                <Typography variant="subtitle2">{rest.hotelName}</Typography>
-              </Popup>
-            </Marker>
-          </MapContainer>
+          <Map position={position} label={rest.hotelName} />
         </Grid>
       </Grid>
     </Grid>
