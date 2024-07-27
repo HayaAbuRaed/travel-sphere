@@ -1,4 +1,4 @@
-import { ReviewResponse } from "./API/types";
+import { HotelResponse, ReviewResponse } from "./API/types";
 
 export interface IdInterface {
   id: number;
@@ -6,7 +6,9 @@ export interface IdInterface {
 
 export interface GalleryProps extends IdInterface {}
 
-export interface HotelInfoProps extends IdInterface {}
+export interface HotelInfoProps {
+  hotel: Omit<HotelResponse, "latitude" | "longitude">;
+}
 
 export interface ReviewProps extends IdInterface {}
 

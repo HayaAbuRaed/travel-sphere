@@ -24,7 +24,19 @@ const ReviewsList: FC<ReviewProps> = ({ id }) => {
 
   return (
     <Stack gap={1}>
-      <Typography variant="h6">Reviews</Typography>
+      <Typography
+        variant="h6"
+        component={Stack}
+        direction={{ xs: "column", md: "row" }}
+        alignItems={{ xs: "flex-start", md: "center" }}
+        gap={{ xs: 0, md: 0.75 }}
+      >
+        Guests Reviews
+        <Typography variant="body2" color="text.secondary">
+          ({reviews.length} reviews)
+        </Typography>
+      </Typography>
+
       <Stack gap={1.5}>
         {reviews.slice(0, visibleCount).map((review) => (
           <ReviewSegment key={review.reviewId} review={review} />

@@ -20,22 +20,13 @@ const Gallery: FC<GalleryProps> = ({ id }) => {
 
   if (!gallery) return null;
 
-  console.log(gallery);
-
   const enhancedGallery = applyPattern(gallery);
 
   return (
-    <Grid
-      item
-      xs
-      pl={4}
-      display="flex"
-      justifyContent="center"
-      //   sx={{ background: "lightPink" }}
-    >
+    <Grid item xs={12} sm display="flex" justifyContent="center">
       <ImageList
         variant="quilted"
-        cols={12}
+        cols={6}
         rowHeight={121}
         sx={{
           maxWidth: { md: 600, lg: 800 },

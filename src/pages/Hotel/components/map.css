@@ -1,3 +1,10 @@
+.leaflet-container {
+  height: 300px;
+  width: 100%;
+  border-radius: 2rem;
+  border: "1px solid #ccc";
+}
+
 .leaflet-container .leaflet-control-attribution {
   display: none;
 }
@@ -5,4 +12,16 @@
 .leaflet-bar a {
   color: #faa935;
   background-color: #f5f5f5;
+}
+
+@media screen and (max-width: 900px) {
+  .leaflet-container {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .leaflet-container {
+    height: 180px;
+  }
 }
