@@ -4,9 +4,12 @@ import { useAppDispatch, useAppSelector } from "src/store/hooks";
 import { FormikSearchPayload } from "src/types/search";
 import { deserializeDateRange, serializeDateRange } from "src/utils/search";
 import validationSchema from "../schema";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const useSearchForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const { formValues } = useAppSelector(selectSearchQueries);
   const { dateRange } = formValues;
@@ -20,6 +23,7 @@ const useSearchForm = () => {
         },
       })
     );
+    pathname !== "/me/search" && navigate("search");
   };
 
   const formikProps = useFormik({

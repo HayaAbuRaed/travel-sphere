@@ -21,6 +21,7 @@ export interface SearchResponse {
   roomPhotoUrl: string;
   discount: number;
   amenities: Amenity[];
+  description: string;
 }
 
 export interface Amenity {

@@ -27,12 +27,18 @@ const InfoRecord: FC<InfoRecordProps> = ({ icon, title, value, show }) => {
   );
 };
 
-const InfoCard: FC<InfoCardProps> = ({ showHotel, showPrice, hideCity }) => {
+const InfoCard: FC<InfoCardProps> = ({
+  showHotel,
+  showPrice,
+  hideCity,
+  singlePriceBound: singleBound,
+}) => {
   const {
     cityName,
     hotelName,
     priceLowerBound: priceLowBound,
     priceUpperBound: priceHighBound,
+    originalRoomPrice,
   } = useHotelCardContext();
 
   const info: InfoRecordProps[] = [
@@ -51,7 +57,9 @@ const InfoCard: FC<InfoCardProps> = ({ showHotel, showPrice, hideCity }) => {
     {
       icon: <PriceIcon sx={{ fontSize: "1.1rem" }} />,
       title: "Price",
-      value: `$${priceLowBound} - $${priceHighBound}`,
+      value: singleBound
+        ? `$${originalRoomPrice}`
+        : `$${priceLowBound} - $${priceHighBound}`,
       show: showPrice ?? false,
     },
   ];

@@ -13,18 +13,26 @@ import InfoCard from "./components/InfoCard";
 import PriceSegment from "./components/PriceSegment";
 import HotelCardContext from "./context/HotelCardContext";
 import { HotelCardProps } from "./types";
+import styles from "./style.module.css";
 
-const HotelCard = ({ children, hotel, action }: HotelCardProps) => {
+const HotelCard = ({ children, hotel, action, horizontal }: HotelCardProps) => {
   return (
     <HotelCardContext.Provider value={hotel}>
-      <Card variant="outlined" sx={{ maxWidth: "450px", position: "relative" }}>
+      <Card
+        variant="outlined"
+        sx={{ maxWidth: "450px", position: "relative" }}
+        className={horizontal && styles.horizontalCard}
+      >
         <CardMedia
           sx={{ height: 200 }}
           image={hotel.photoUrl}
           title={hotel.hotelName}
+          className={horizontal && styles.horizontalCardMedia}
         />
 
-        <CardContent>{children}</CardContent>
+        <CardContent className={horizontal && styles.horizontalCardContent}>
+          {children}
+        </CardContent>
 
         {action && (
           <CardActions sx={{ justifyContent: "center", pt: 0 }}>

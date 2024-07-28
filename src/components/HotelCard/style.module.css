@@ -15,3 +15,24 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.horizontalCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 700px;
+  padding: 1rem 1.5rem;
+}
+
+.horizontalCardMedia {
+  width: 35%;
+  border-radius: 12px;
+}
+
+.horizontalCardContent {
+  /* width: 55%; */
+  padding-inline: 0;
+  min-width: 65%;
+}

@@ -1,10 +1,11 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
 import AuthenticationRoute from "./AuthenticationRoute";
-import Hotel from "src/pages/Hotel";
 
 const Layout = lazy(() => import("src/containers/Layout"));
 const Home = lazy(() => import("src/pages/Home"));
+const Hotel = lazy(() => import("src/pages/Hotel"));
+const SearchResults = lazy(() => import("src/pages/SearchResults"));
 
 const protectedRoutes: RouteObject = {
   path: "/me",
@@ -21,6 +22,10 @@ const protectedRoutes: RouteObject = {
         {
           path: "hotels/:id",
           element: <Hotel />,
+        },
+        {
+          path: "search",
+          element: <SearchResults />,
         },
       ],
     },
