@@ -8,6 +8,11 @@ import SpaIcon from "@mui/icons-material/HotTub";
 import CityIcon from "@mui/icons-material/LocationCityRounded";
 import PoolIcon from "@mui/icons-material/Pool";
 import WifiIcon from "@mui/icons-material/Wifi";
+import TvIcon from "@mui/icons-material/Tv";
+import BedIcon from "@mui/icons-material/BedOutlined";
+import AcIcon from "@mui/icons-material/AcUnit";
+import SeaIcon from "@mui/icons-material/Waves";
+import BudgetIcon from "@mui/icons-material/CreditCard";
 import { ReactElement } from "react";
 
 export interface IconListItem {
@@ -16,7 +21,7 @@ export interface IconListItem {
   keys?: string[];
 }
 
-export const IconsList: IconListItem[] = [
+export const iconsList: IconListItem[] = [
   {
     name: "wi-fi",
     icon: <WifiIcon fontSize="small" color="success" />,
@@ -40,7 +45,7 @@ export const IconsList: IconListItem[] = [
   {
     name: "mini-bar",
     icon: <MiniBarIcon fontSize="small" color="error" />,
-    keys: ["mini-bar", "minibar"],
+    keys: ["mini-bar", "minibar", "bar", "kitchenette"],
   },
   {
     name: "city",
@@ -65,6 +70,31 @@ export const IconsList: IconListItem[] = [
   {
     name: "spa",
     icon: <SpaIcon fontSize="small" color="info" />,
-    keys: ["spa"],
+    keys: ["spa", "jacuzzi"],
+  },
+  {
+    name: "tv",
+    icon: <TvIcon fontSize="small" color="warning" />,
+    keys: ["tv", "television"],
+  },
+  {
+    name: "bed",
+    icon: <BedIcon fontSize="small" color="info" />,
+    keys: ["bed", "beds"],
+  },
+  {
+    name: "ac",
+    icon: <AcIcon fontSize="small" color="info" />,
+    keys: ["ac", "conditioning"],
+  },
+  {
+    name: "sea",
+    icon: <SeaIcon fontSize="small" color="info" />,
+    keys: ["sea", "ocean"],
+  },
+  {
+    name: "budget",
+    icon: <BudgetIcon fontSize="small" color="error" />,
+    keys: ["budget", "cheap", "affordable", "budget-friendly"],
   },
 ];

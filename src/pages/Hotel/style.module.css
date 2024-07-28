@@ -1,0 +1,46 @@
+.carousel {
+  width: 100%;
+}
+
+.carouselItem {
+  padding-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controlScroll {
+  max-height: calc(746px - 300px - 32px - 0.5rem - 0.5rem);
+}
+
+.reviewsContainer {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.loaderContainer {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 464px) {
+  .carouselItem {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .controlScroll {
+    max-height: calc(746px - 250px - 52px - 0.75rem - 0.5rem - 0.5rem);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .controlScroll {
+    max-height: calc(746px - 180px - 52px - 1.5rem - 0.5rem - 0.5rem);
+  }
+}

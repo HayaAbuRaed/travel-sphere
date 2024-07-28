@@ -55,9 +55,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 0; /* Add this to prevent items from growing larger than the container */
+  min-width: 0;
 }
-
 
 @media screen and (max-width: 464px) {
   .carouselItem {

@@ -8,10 +8,12 @@ const ReviewSegment: FC<ReviewSegmentProps> = ({ review }) => {
   return (
     <Card
       variant="outlined"
+      minHeight="fit-content"
       component={Stack}
       p={2}
       gap={1}
       sx={{ borderRadius: 2.5 }}
+      position="relative"
     >
       <Stack direction="row" gap={1} alignItems="center">
         <Avatar

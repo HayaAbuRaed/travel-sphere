@@ -1,7 +1,7 @@
 import { Chip } from "@mui/material";
 import { FC } from "react";
 import { getIconByName } from "src/utils/icons";
-import CheckIcon from "@mui/icons-material/Check";
+import CheckIcon from "@mui/icons-material/CheckCircleOutline";
 
 export interface AmenityChipProps {
   label: string;
@@ -10,7 +10,9 @@ export interface AmenityChipProps {
 }
 
 const AmenityChip: FC<AmenityChipProps> = ({ label, fitContent }) => {
-  const icon = getIconByName(label) ?? <CheckIcon />;
+  const icon = getIconByName(label) ?? (
+    <CheckIcon fontSize="small" color="success" />
+  );
 
   return (
     <Chip

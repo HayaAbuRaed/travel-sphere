@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import HotelCard from "src/components/HotelCard";
 import { recentlyVisitedCarouselProps } from "../constants";
 import useGetRecentlyVisitedHotels from "../hook/useGetRecentlyVisitedHotels";

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { IconsList } from "src/constants/icons";
+import { iconsList } from "src/constants/icons";
 
 /**
  * Searches for an icon based on the given search string.
@@ -12,7 +12,7 @@ export const getIconByName = (searchString: string): ReactElement | null => {
   const words = searchString.toLowerCase().split(" ");
 
   // Iterate through the IconsList to find a matching name or key
-  for (const item of IconsList) {
+  for (const item of iconsList) {
     if (
       words.includes(item.name) ||
       item.keys?.some((key) => words.includes(key))

@@ -1,7 +1,6 @@
 import { Grid, Stack } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import HotelCard from "src/components/HotelCard";
 import { featuredDealsCarouselProps } from "../constants";
 import useGetFeaturedDeals from "../hook/useGetFeaturedDeals";

@@ -1,3 +1,5 @@
+import { Amenity } from "src/types/room";
+
 export interface HotelResponse {
   hotelName: string;
   location: string;
@@ -11,11 +13,6 @@ export interface HotelResponse {
   cityId: number;
 }
 
-export interface Amenity {
-  name: string;
-  description: string;
-}
-
 export interface PhotoResponse {
   id: number;
   url: string;
@@ -26,4 +23,10 @@ export interface ReviewResponse {
   customerName: string;
   rating: number;
   description: string;
+}
+
+export interface GetRoomsRequest {
+  hotelId: number;
+  checkInDate: string;
+  checkOutDate: string;
 }

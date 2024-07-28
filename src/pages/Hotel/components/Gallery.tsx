@@ -1,26 +1,13 @@
-import { Grid, ImageList, ImageListItem } from "@mui/material";
+import { Grid, ImageList, ImageListItem, Skeleton } from "@mui/material";
 import { FC } from "react";
 import useGetHotelGallery from "../hooks/useGetHotelGallery";
 import { GalleryProps } from "../types";
-import { applyPattern } from "../utils";
-
-const srcset = (image: string, size: number, rows = 1, cols = 1) => {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
-    }&fit=crop&auto=format&dpr=2 2x`,
-  };
-};
+import { applyPattern, srcset } from "../utils";
 
 const Gallery: FC<GalleryProps> = ({ id }) => {
   const { gallery, isFetching } = useGetHotelGallery(id);
 
-  if (isFetching) return <div>Loading...</div>;
-
-  if (!gallery) return null;
-
-  const enhancedGallery = applyPattern(gallery);
+  const enhancedGallery = applyPattern(gallery ?? Array.from({ length: 13 }));
 
   return (
     <Grid item xs={12} sm display="flex" justifyContent="center">
@@ -42,11 +29,28 @@ const Gallery: FC<GalleryProps> = ({ id }) => {
             cols={photo.cols || 1}
             rows={photo.rows || 1}
           >
-            <img
-              {...srcset(photo.url, 121, photo.rows, photo.cols)}
-              alt={`photo${photo.id}`}
-              loading="lazy"
-            />
+            {isFetching && (
+              <Skeleton
+                variant="rectangular"
+                sx={{
+                  width: {
+                    xs: 350 * (photo.cols / 6),
+                    md: 520 * (photo.cols / 6),
+                    lg: 720 * (photo.cols / 6),
+                    xl: 780 * (photo.cols / 6),
+                  },
+                }}
+                height={121 * photo.rows}
+              />
+            )}
+
+            {gallery && (
+              <img
+                {...srcset(photo.url, 121, photo.rows, photo.cols)}
+                alt={`photo${photo.id}`}
+                loading="lazy"
+              />
+            )}
           </ImageListItem>
         ))}
       </ImageList>

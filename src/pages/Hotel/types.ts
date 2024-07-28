@@ -26,3 +26,5 @@ export interface GalleryPattern {
   rows: number;
   cols: number;
 }
+
+export interface RoomsCarouselProps extends IdInterface {}
