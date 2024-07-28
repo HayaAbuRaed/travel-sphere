@@ -1,6 +1,7 @@
 import { Grid, Stack } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
+import { useNavigate } from "react-router-dom";
 import HotelCard from "src/components/HotelCard";
 import { featuredDealsCarouselProps } from "../constants";
 import useGetFeaturedDeals from "../hook/useGetFeaturedDeals";
@@ -12,6 +13,12 @@ import SectionTitle from "./SectionTitle";
 
 const FeaturedDeals: FC = () => {
   const { featuredDeals, isFetching } = useGetFeaturedDeals();
+
+  const navigate = useNavigate();
+
+  const handleHotelCardAction = (hotelId: number) => {
+    navigate(`hotels/${hotelId}`);
+  };
 
   return (
     <Grid
@@ -31,7 +38,7 @@ const FeaturedDeals: FC = () => {
             <HotelCard
               key={`deal${deal.hotelId}`}
               hotel={mapDealToHotel(deal)}
-              action={() => {}}
+              action={() => handleHotelCardAction(deal.hotelId)}
             >
               <Stack className={styles.overViewContainer}>
                 <HotelCard.Rating />

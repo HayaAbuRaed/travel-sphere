@@ -9,9 +9,16 @@ import { formatDisplayDate, mapRecentlyVisitedHotelToHotel } from "../utils";
 import "./carousel.css";
 import CarouselSkeleton from "./CarouselSkeleton";
 import SectionTitle from "./SectionTitle";
+import { useNavigate } from "react-router-dom";
 
 const RecentlyVisited: FC = () => {
   const { recentHotels, isFetching } = useGetRecentlyVisitedHotels();
+
+  const navigate = useNavigate();
+
+  const handleHotelCardClick = (hotelId: number) => {
+    navigate(`hotels/${hotelId}`);
+  };
 
   return (
     <Grid
@@ -32,7 +39,7 @@ const RecentlyVisited: FC = () => {
               item
               xs
               key={`hotel${hotel.hotelId}`}
-              onClick={() => {}}
+              onClick={() => handleHotelCardClick(hotel.hotelId)}
               sx={{ cursor: "pointer" }}
             >
               <HotelCard hotel={mapRecentlyVisitedHotelToHotel(hotel)}>

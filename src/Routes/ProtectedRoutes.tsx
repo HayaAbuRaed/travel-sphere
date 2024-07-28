@@ -19,7 +19,7 @@ const protectedRoutes: RouteObject = {
           element: <Home />,
         },
         {
-          path: "hotel/:id",
+          path: "hotels/:id",
           element: <Hotel />,
         },
       ],
