@@ -1,17 +1,24 @@
-import { Grid, Skeleton } from "@mui/material";
+import { Grid } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import HotelCard from "src/components/HotelCard";
 import { recentlyVisitedCarouselProps } from "../constants";
 import useGetRecentlyVisitedHotels from "../hook/useGetRecentlyVisitedHotels";
 import styles from "../style.module.css";
 import { formatDisplayDate, mapRecentlyVisitedHotelToHotel } from "../utils";
 import "./carousel.css";
+import CarouselSkeleton from "./CarouselSkeleton";
 import SectionTitle from "./SectionTitle";
+import { useNavigate } from "react-router-dom";
 
 const RecentlyVisited: FC = () => {
   const { recentHotels, isFetching } = useGetRecentlyVisitedHotels();
+
+  const navigate = useNavigate();
+
+  const handleHotelCardClick = (hotelId: number) => {
+    navigate(`hotels/${hotelId}`);
+  };
 
   return (
     <Grid
@@ -23,19 +30,16 @@ const RecentlyVisited: FC = () => {
     >
       <SectionTitle title="recently visited hotels" />
 
-      <Carousel {...recentlyVisitedCarouselProps}>
-        {isFetching &&
-          Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={index} variant="rectangular" height={400} />
-          ))}
+      {isFetching && <CarouselSkeleton />}
 
-        {recentHotels &&
-          recentHotels.map((hotel) => (
+      {recentHotels && (
+        <Carousel {...recentlyVisitedCarouselProps}>
+          {recentHotels.map((hotel) => (
             <Grid
               item
               xs
               key={`hotel${hotel.hotelId}`}
-              onClick={() => {}}
+              onClick={() => handleHotelCardClick(hotel.hotelId)}
               sx={{ cursor: "pointer" }}
             >
               <HotelCard hotel={mapRecentlyVisitedHotelToHotel(hotel)}>
@@ -48,7 +52,8 @@ const RecentlyVisited: FC = () => {
               </HotelCard>
             </Grid>
           ))}
-      </Carousel>
+        </Carousel>
+      )}
     </Grid>
   );
 };
