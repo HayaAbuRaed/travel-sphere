@@ -3,6 +3,7 @@ import { PropsWithChildren, ReactNode } from "react";
 export interface HotelCardProps extends PropsWithChildren {
   action?: () => void;
   hotel: Hotel;
+  horizontal?: true;
 }
 
 export interface HeadingProps {
@@ -13,6 +14,7 @@ export interface InfoCardProps {
   hideCity?: true;
   showHotel?: true;
   showPrice?: true;
+  singlePriceBound?: true;
 }
 
 export interface InfoRecordProps {

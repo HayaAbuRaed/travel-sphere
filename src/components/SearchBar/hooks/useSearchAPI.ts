@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { selectSearchQueries } from "src/features/searchQueries";
+import {
+  resetSearchSubmitted,
+  selectSearchQueries,
+} from "src/features/searchQueries";
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
 import { useAppDispatch, useAppSelector } from "src/store/hooks";
 import { searchApi } from "../API";
@@ -19,12 +22,14 @@ const useSearchAPI = () => {
     isFetching,
     error,
   } = useQuery({
-    queryFn: () =>
-      searchApi({
+    queryFn: () => {
+      dispatch(resetSearchSubmitted());
+      return searchApi({
         ...otherFormValues,
         checkInDate: startDate,
         checkOutDate: endDate,
-      }),
+      });
+    },
     queryKey: [SEARCH_QUERY_KEY],
     enabled: searchSubmitted,
   });

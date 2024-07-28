@@ -19,9 +19,13 @@ const searchQueriesSlice = createSlice({
     resetSearchQueries: () => {
       return { ...INITIAL_VALUES };
     },
+    resetSearchSubmitted: (state) => {
+      return { ...state, searchSubmitted: false };
+    },
   },
 });
 
 export default searchQueriesSlice.reducer;
 
-export const { submitSearch, resetSearchQueries } = searchQueriesSlice.actions;
+export const { submitSearch, resetSearchQueries, resetSearchSubmitted } =
+  searchQueriesSlice.actions;
