@@ -1,5 +1,7 @@
+import CartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import {
   Box,
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -8,14 +10,23 @@ import {
   Typography,
 } from "@mui/material";
 import { FC } from "react";
-import { RoomCardProps } from "./types";
 import AmenityChip from "../AmenityChip";
-import LoadingButton from "@mui/lab/LoadingButton";
-import CartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import styles from "./style.module.css";
+import { RoomCardProps } from "./types";
+import { isRoomInCart } from "src/utils/room";
+import { selectCart } from "src/features/cart/selectors";
+import { useAppDispatch, useAppSelector } from "src/store/hooks";
+import { addToCart, removeFromCart } from "src/features/cart/cartSlice";
+import { showSuccessSnackbar } from "src/features/snackbar/snackbarSlice";
+import { useLocation } from "react-router-dom";
 
 const RoomCard: FC<RoomCardProps> = ({ room }) => {
+  const cartState = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
+  const location = useLocation();
+
   const {
+    roomId,
     roomType,
     roomPhotoUrl,
     price,
@@ -24,6 +35,27 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
     roomAmenities,
     availability,
   } = room;
+
+  const isInCart = isRoomInCart(cartState, roomId);
+
+  const allowRemoveFromCart = location.pathname === "/me/cart";
+
+  const buttonDisabled = !availability || (isInCart && !allowRemoveFromCart);
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(room));
+    dispatch(showSuccessSnackbar({ message: "Room added to cart" }));
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(roomId));
+    dispatch(showSuccessSnackbar({ message: "Room removed from cart" }));
+  };
+
+  const handleClick = () => {
+    !isInCart && handleAddToCart();
+    isInCart && allowRemoveFromCart && handleRemoveFromCart();
+  };
 
   return (
     <Card
@@ -73,12 +105,11 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
         </Stack>
       </CardContent>
       <CardActions sx={{ justifyContent: "center", pb: 2, mt: "auto" }}>
-        <LoadingButton
-          onClick={() => {}}
-          disabled={!availability}
+        <Button
+          onClick={handleClick}
+          disabled={buttonDisabled}
           startIcon={<CartIcon />}
           variant="contained"
-          loadingPosition="start"
           aria-label="add-to-cart"
           color="secondary"
           size="small"
@@ -91,8 +122,10 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
             px: 3,
           }}
         >
-          Add to cart
-        </LoadingButton>
+          {!isInCart && "Add to cart"}
+          {isInCart &&
+            (allowRemoveFromCart ? "Remove from cart" : "Added to cart")}
+        </Button>
       </CardActions>
     </Card>
   );

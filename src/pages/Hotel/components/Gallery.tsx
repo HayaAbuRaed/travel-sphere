@@ -12,6 +12,7 @@ const Gallery: FC<GalleryProps> = ({ id }) => {
   return (
     <Grid item xs={12} sm display="flex" justifyContent="center">
       <ImageList
+        key={id}
         variant="quilted"
         cols={6}
         rowHeight={121}
@@ -23,13 +24,13 @@ const Gallery: FC<GalleryProps> = ({ id }) => {
           overflow: "hidden",
         }}
       >
-        {enhancedGallery.map((photo) => (
+        {enhancedGallery.map((photo, index) => (
           <ImageListItem
-            key={photo.url}
+            key={photo.id ?? index}
             cols={photo.cols || 1}
             rows={photo.rows || 1}
           >
-            {isFetching && (
+            {isFetching ? (
               <Skeleton
                 variant="rectangular"
                 sx={{
@@ -42,9 +43,7 @@ const Gallery: FC<GalleryProps> = ({ id }) => {
                 }}
                 height={121 * photo.rows}
               />
-            )}
-
-            {gallery && (
+            ) : (
               <img
                 {...srcset(photo.url, 121, photo.rows, photo.cols)}
                 alt={`photo${photo.id}`}

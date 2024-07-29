@@ -18,6 +18,8 @@ export const cartSlice = createSlice({
       state.items.push(action.payload);
       state.totalItems += 1;
       state.totalPrice += action.payload.price;
+
+      localStorage.setItem("cartItems", JSON.stringify(state));
     },
     removeFromCart: (state: CartState, action: PayloadAction<number>) => {
       const index = state.items.findIndex(
@@ -28,6 +30,8 @@ export const cartSlice = createSlice({
         state.totalPrice -= state.items[index].price;
         state.items.splice(index, 1);
         state.totalItems -= 1;
+
+        localStorage.setItem("cartItems", JSON.stringify(state));
       }
     },
   },
