@@ -32,3 +32,11 @@
   border-radius: 8px;
   z-index: 0;
 }
+
+.button {
+  max-width: 225px;
+  text-transform: capitalize;
+  border-radius: 2.5rem;
+  color: #fafafa;
+  padding-inline: 1.5rem;
+}
