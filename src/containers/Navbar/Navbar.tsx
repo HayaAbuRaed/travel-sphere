@@ -14,9 +14,13 @@ import MobileNavMenu from "./components/MobileNavMenu";
 import UserSegment from "./components/UserSegment";
 import styles from "./style.module.css";
 import { StyledBadge } from "./styled";
+import { useAppSelector } from "src/store/hooks";
+import { selectCartTotalItems } from "src/features/cart/selectors";
 
 const Navbar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const cartItemsCount = useAppSelector(selectCartTotalItems);
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -27,7 +31,12 @@ const Navbar: FC = () => {
   };
 
   return (
-    <AppBar position="static" elevation={0} color="transparent">
+    <AppBar
+      position="static"
+      elevation={0}
+      color="transparent"
+      sx={{ borderBottom: "1px solid #eee" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MobileNavMenu
@@ -61,7 +70,7 @@ const Navbar: FC = () => {
 
           <Stack ml="auto" flexDirection="row" alignItems="center" gap={1.5}>
             <IconButton sx={{ color: "text.secondary" }}>
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={cartItemsCount} color="error">
                 <ShoppingCartIcon />
               </StyledBadge>
             </IconButton>
