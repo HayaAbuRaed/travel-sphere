@@ -18,7 +18,7 @@ const AmenityChip: FC<AmenityChipProps> = ({ label, fitContent }) => {
     <Chip
       label={label}
       icon={icon}
-      sx={{ px: 1, width: fitContent && "fit-content" }}
+      sx={{ px: 1, width: fitContent && "fit-content", fontSize: 16 }}
     />
   );
 };

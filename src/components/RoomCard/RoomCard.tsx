@@ -54,7 +54,7 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
   };
 
   const handleCheckout = () => {
-    navigate(`/me/checkout/${roomId}`);
+    navigate(`/me/cart/checkout/${roomId}`);
   };
 
   return (
