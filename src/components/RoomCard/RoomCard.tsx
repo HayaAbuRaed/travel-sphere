@@ -1,3 +1,5 @@
+import TrashIcon from "@mui/icons-material/DeleteOutlined";
+import CheckoutIcon from "@mui/icons-material/ShoppingCartCheckoutOutlined";
 import CartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import {
   Box,
@@ -10,20 +12,21 @@ import {
   Typography,
 } from "@mui/material";
 import { FC } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { addToCart, removeFromCart } from "src/features/cart/cartSlice";
+import { selectCart } from "src/features/cart/selectors";
+import { showSuccessSnackbar } from "src/features/snackbar/snackbarSlice";
+import { useAppDispatch, useAppSelector } from "src/store/hooks";
+import { isRoomInCart } from "src/utils/room";
 import AmenityChip from "../AmenityChip";
 import styles from "./style.module.css";
 import { RoomCardProps } from "./types";
-import { isRoomInCart } from "src/utils/room";
-import { selectCart } from "src/features/cart/selectors";
-import { useAppDispatch, useAppSelector } from "src/store/hooks";
-import { addToCart, removeFromCart } from "src/features/cart/cartSlice";
-import { showSuccessSnackbar } from "src/features/snackbar/snackbarSlice";
-import { useLocation } from "react-router-dom";
 
 const RoomCard: FC<RoomCardProps> = ({ room }) => {
   const cartState = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     roomId,
@@ -38,9 +41,7 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
 
   const isInCart = isRoomInCart(cartState, roomId);
 
-  const allowRemoveFromCart = location.pathname === "/me/cart";
-
-  const buttonDisabled = !availability || (isInCart && !allowRemoveFromCart);
+  const inCartPage = location.pathname === "/me/cart";
 
   const handleAddToCart = () => {
     dispatch(addToCart(room));
@@ -52,9 +53,8 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
     dispatch(showSuccessSnackbar({ message: "Room removed from cart" }));
   };
 
-  const handleClick = () => {
-    !isInCart && handleAddToCart();
-    isInCart && allowRemoveFromCart && handleRemoveFromCart();
+  const handleCheckout = () => {
+    navigate(`/me/cart/checkout/${roomId}`);
   };
 
   return (
@@ -104,28 +104,58 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
           ))}
         </Stack>
       </CardContent>
-      <CardActions sx={{ justifyContent: "center", pb: 2, mt: "auto" }}>
-        <Button
-          onClick={handleClick}
-          disabled={buttonDisabled}
-          startIcon={<CartIcon />}
-          variant="contained"
-          aria-label="add-to-cart"
-          color="secondary"
-          size="small"
-          disableElevation
-          sx={{
-            maxWidth: "225px",
-            textTransform: "capitalize",
-            borderRadius: 5,
-            color: "#fafafa",
-            px: 3,
-          }}
-        >
-          {!isInCart && "Add to cart"}
-          {isInCart &&
-            (allowRemoveFromCart ? "Remove from cart" : "Added to cart")}
-        </Button>
+      <CardActions
+        sx={{
+          justifyContent: "center",
+          pb: 2,
+          gap: 1,
+          mt: "auto",
+        }}
+      >
+        {!inCartPage && (
+          <Button
+            onClick={handleAddToCart}
+            disabled={!availability || isInCart}
+            startIcon={<CartIcon />}
+            variant="contained"
+            aria-label="add-to-cart"
+            color="secondary"
+            size="small"
+            disableElevation
+            className={styles.button}
+          >
+            {!isInCart ? "Add to cart" : "Added to cart"}
+          </Button>
+        )}
+
+        {inCartPage && (
+          <>
+            <Button
+              onClick={handleCheckout}
+              startIcon={<CheckoutIcon />}
+              variant="contained"
+              aria-label="checkout"
+              color="info"
+              size="small"
+              disableElevation
+              className={styles.button}
+            >
+              Checkout
+            </Button>
+            <Button
+              onClick={handleRemoveFromCart}
+              startIcon={<TrashIcon />}
+              variant="contained"
+              aria-label="remove-from-cart"
+              color="error"
+              size="small"
+              disableElevation
+              className={styles.button}
+            >
+              Remove
+            </Button>
+          </>
+        )}
       </CardActions>
     </Card>
   );

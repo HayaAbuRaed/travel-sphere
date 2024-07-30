@@ -6,6 +6,8 @@ const Layout = lazy(() => import("src/containers/Layout"));
 const Home = lazy(() => import("src/pages/Home"));
 const Hotel = lazy(() => import("src/pages/Hotel"));
 const SearchResults = lazy(() => import("src/pages/SearchResults"));
+const Cart = lazy(() => import("src/pages/Cart"));
+const Checkout = lazy(() => import("src/pages/Checkout"));
 
 const protectedRoutes: RouteObject = {
   path: "/me",
@@ -26,6 +28,19 @@ const protectedRoutes: RouteObject = {
         {
           path: "search",
           element: <SearchResults />,
+        },
+        {
+          path: "cart",
+          children: [
+            {
+              path: "",
+              element: <Cart />,
+            },
+            {
+              path: "checkout/:roomId",
+              element: <Checkout />,
+            },
+          ],
         },
       ],
     },

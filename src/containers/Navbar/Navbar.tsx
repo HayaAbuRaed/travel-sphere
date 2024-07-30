@@ -16,9 +16,12 @@ import styles from "./style.module.css";
 import { StyledBadge } from "./styled";
 import { useAppSelector } from "src/store/hooks";
 import { selectCartTotalItems } from "src/features/cart/selectors";
+import { useNavigate } from "react-router-dom";
 
 const Navbar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const navigate = useNavigate();
 
   const cartItemsCount = useAppSelector(selectCartTotalItems);
 
@@ -29,6 +32,8 @@ const Navbar: FC = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  const handleCartClick = () => navigate("/me/cart");
 
   return (
     <AppBar
@@ -69,7 +74,10 @@ const Navbar: FC = () => {
           </Box> */}
 
           <Stack ml="auto" flexDirection="row" alignItems="center" gap={1.5}>
-            <IconButton sx={{ color: "text.secondary" }}>
+            <IconButton
+              onClick={handleCartClick}
+              sx={{ color: "text.secondary" }}
+            >
               <StyledBadge badgeContent={cartItemsCount} color="error">
                 <ShoppingCartIcon />
               </StyledBadge>
