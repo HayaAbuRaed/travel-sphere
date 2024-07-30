@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import { formatDate } from "src/utils/search";
+import { formatDisplayDate } from "src/utils/search";
 import styles from "../style.module.css";
 import { PostCheckoutTableProps } from "../types";
 
@@ -19,10 +19,11 @@ const PostCheckoutTable: FC<PostCheckoutTableProps> = ({ details }) => {
 
   return (
     <Stack
-      p={{ xs: 1, sm: 5 }}
+      py={5}
+      px={{ xs: 2, sm: 5 }}
       gap={1}
       alignItems="center"
-      className={styles.tableContainer}
+      className={styles.container}
     >
       <Typography component="h1" variant="h5">
         Confirmation Details
@@ -56,7 +57,7 @@ const PostCheckoutTable: FC<PostCheckoutTableProps> = ({ details }) => {
           </tr>
           <tr>
             <th>Booking Date</th>
-            <td>{formatDate(new Date(bookingDateTime))}</td>
+            <td>{formatDisplayDate(new Date(bookingDateTime))}</td>
           </tr>
           <tr>
             <th>Payment Method</th>

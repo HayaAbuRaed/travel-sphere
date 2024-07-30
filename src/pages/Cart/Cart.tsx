@@ -15,14 +15,25 @@ const Cart: FC = () => {
         </Typography>
       </Grid>
 
-      <Grid item container justifyContent="center">
-        <Grid item container gap={2} sx={{ maxWidth: 1100 }}>
-          {items.map((item) => (
-            <Grid item xs={3.8} key={item.roomId}>
-              <RoomCard room={item} />
-            </Grid>
-          ))}
-        </Grid>
+      <Grid
+        item
+        container
+        gap={2}
+        sx={{ maxWidth: 1100 }}
+        justifyContent="center"
+      >
+        {items.map((item) => (
+          <Grid
+            item
+            container
+            xs
+            md={3.8}
+            key={item.roomId}
+            justifyContent="center"
+          >
+            <RoomCard room={item} />
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   );

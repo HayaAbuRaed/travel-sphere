@@ -27,7 +27,6 @@ const useAddBookingForm = (room: RoomResponse) => {
       `bookingResponse${roomId}`,
       JSON.stringify(response)
     );
-    console.log(response);
     dispatch(removeFromCart(roomId));
     return response;
   };

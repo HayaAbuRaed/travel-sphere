@@ -1,3 +1,4 @@
+import { RoomResponse } from "src/types/room";
 import { BookingResponse } from "./API/types";
 
 export interface CheckoutFormValues {
@@ -20,4 +21,8 @@ export enum PaymentType {
 
 export interface PostCheckoutTableProps {
   details: BookingResponse;
+}
+
+export interface RoomInfoProps {
+  room: RoomResponse;
 }
