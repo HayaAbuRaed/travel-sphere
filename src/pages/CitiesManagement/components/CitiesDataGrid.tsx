@@ -7,24 +7,18 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableSortLabel,
 } from "@mui/material";
 import { FC } from "react";
-import useGetCities from "../hooks/useGetCities";
-import { getTableRows } from "../utils";
 import { City } from "../API/types";
 import styles from "../styles.module.css";
+import { CitiesDataGridProps } from "../types";
 
-document.title = "Cities Management";
-
-const CitiesDataGrid: FC = () => {
-  const { cities, isFetching } = useGetCities();
-
-  if (isFetching) return <h1>Loading...</h1>;
-
-  if (!cities) return null;
-
-  const tableRows = getTableRows(cities);
-
+const CitiesDataGrid: FC<CitiesDataGridProps> = ({
+  cities,
+  sortConfig,
+  handleSort,
+}) => {
   const headers: (keyof City)[] = ["id", "name", "description"];
 
   return (
@@ -35,26 +29,34 @@ const CitiesDataGrid: FC = () => {
             <TableRow>
               {headers.map((header) => (
                 <TableCell key={header} className={styles.tableHeaderCell}>
-                  {header}
+                  <TableSortLabel
+                    active={sortConfig?.key === header}
+                    direction={
+                      sortConfig?.key === header ? sortConfig.direction : "asc"
+                    }
+                    onClick={() => handleSort(header)}
+                  >
+                    {header}
+                  </TableSortLabel>
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableRows.map((row) => (
+            {cities.map((city) => (
               <TableRow
-                key={row.name}
+                key={city.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 className={styles.tableRow}
               >
                 <TableCell component="th" scope="row">
-                  {row.id}
+                  {city.id}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {city.name}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.description}
+                  {city.description}
                 </TableCell>
               </TableRow>
             ))}
