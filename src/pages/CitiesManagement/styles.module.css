@@ -1,0 +1,8 @@
+.tableHeaderCell:last-child {
+  text-align: center;
+}
+
+.tableRow:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}

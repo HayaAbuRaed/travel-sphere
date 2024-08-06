@@ -8,6 +8,7 @@ const Hotel = lazy(() => import("src/pages/Hotel"));
 const SearchResults = lazy(() => import("src/pages/SearchResults"));
 const Cart = lazy(() => import("src/pages/Cart"));
 const Checkout = lazy(() => import("src/pages/Checkout"));
+const CitiesManagement = lazy(() => import("src/pages/CitiesManagement"));
 
 const protectedRoutes: RouteObject = {
   path: "/me",
@@ -41,6 +42,10 @@ const protectedRoutes: RouteObject = {
               element: <Checkout />,
             },
           ],
+        },
+        {
+          path: "cities",
+          element: <CitiesManagement />,
         },
       ],
     },
