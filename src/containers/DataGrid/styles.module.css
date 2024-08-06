@@ -1,0 +1,12 @@
+.tableHeaderCell:last-child {
+  text-align: center;
+}
+
+.tableHeaderCell {
+  text-transform: capitalize;
+}
+
+.tableRow:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}

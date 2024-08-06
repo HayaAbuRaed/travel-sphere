@@ -11,20 +11,17 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { City } from "./API/types";
-import CitiesDataGrid from "./components/CitiesDataGrid";
 import useGetCities from "./hooks/useGetCities";
 import styles from "./styles.module.css";
-import { FilterConfigState, SortConfigState } from "./types";
-import { filterCities, sortCities } from "./utils";
+import { FilterConfigState } from "./types";
+import { filterCities } from "./utils";
+import DataGrid from "src/containers/DataGrid";
 
 const CitiesManagement: FC = () => {
-  const [sortConfig, setSortConfig] = useState<SortConfigState | null>(null);
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
     key: "all",
     value: "",
   });
-
-  console.log(filterConfig);
 
   const { cities, isFetching } = useGetCities();
 
@@ -32,24 +29,11 @@ const CitiesManagement: FC = () => {
 
   if (!cities) return null;
 
-  // apply sorting and filtering to the cities array
-  const sortedCities = sortCities(cities, sortConfig);
   const filteredCities = filterCities(
-    sortedCities,
+    cities,
     filterConfig.key,
     filterConfig.value
   );
-
-  const handleSort = (header: keyof City) => {
-    if (sortConfig?.key === header) {
-      setSortConfig({
-        key: header,
-        direction: sortConfig.direction === "asc" ? "desc" : "asc",
-      });
-    } else {
-      setSortConfig({ key: header, direction: "asc" });
-    }
-  };
 
   const handleSelectChange = (event: SelectChangeEvent) => {
     setFilterConfig({
@@ -110,10 +94,9 @@ const CitiesManagement: FC = () => {
         </Stack>
       </Stack>
 
-      <CitiesDataGrid
-        cities={filteredCities}
-        sortConfig={sortConfig}
-        handleSort={handleSort}
+      <DataGrid
+        data={filteredCities}
+        headers={["id", "name", "description"] as (keyof City)[]}
       />
     </Grid>
   );

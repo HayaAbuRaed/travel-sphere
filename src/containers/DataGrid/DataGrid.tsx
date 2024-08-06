@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { DataGridProps, SortConfigState } from "./types";
+import { sortData } from "./utils";
 import {
   Grid,
   Paper,
@@ -9,17 +12,23 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
-import { FC } from "react";
-import { City } from "../API/types";
-import styles from "../styles.module.css";
-import { CitiesDataGridProps } from "../types";
+import styles from "./styles.module.css";
 
-const CitiesDataGrid: FC<CitiesDataGridProps> = ({
-  cities,
-  sortConfig,
-  handleSort,
-}) => {
-  const headers: (keyof City)[] = ["id", "name", "description"];
+const DataGrid = <T,>({ data, headers }: DataGridProps<T>) => {
+  const [sortConfig, setSortConfig] = useState<SortConfigState<T> | null>(null);
+
+  const sortedData = sortData(data, sortConfig);
+
+  const handleSort = (header: keyof T) => {
+    if (sortConfig?.key === header) {
+      setSortConfig({
+        key: header,
+        direction: sortConfig.direction === "asc" ? "desc" : "asc",
+      });
+    } else {
+      setSortConfig({ key: header, direction: "asc" });
+    }
+  };
 
   return (
     <Grid container justifyContent="center">
@@ -28,7 +37,10 @@ const CitiesDataGrid: FC<CitiesDataGridProps> = ({
           <TableHead>
             <TableRow>
               {headers.map((header) => (
-                <TableCell key={header} className={styles.tableHeaderCell}>
+                <TableCell
+                  key={header as string}
+                  className={styles.tableHeaderCell}
+                >
                   <TableSortLabel
                     active={sortConfig?.key === header}
                     direction={
@@ -36,28 +48,25 @@ const CitiesDataGrid: FC<CitiesDataGridProps> = ({
                     }
                     onClick={() => handleSort(header)}
                   >
-                    {header}
+                    {header as string}
                   </TableSortLabel>
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
-            {cities.map((city) => (
+            {sortedData.map((item, index) => (
               <TableRow
-                key={city.name}
+                key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 className={styles.tableRow}
               >
-                <TableCell component="th" scope="row">
-                  {city.id}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {city.name}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {city.description}
-                </TableCell>
+                {headers.map((header) => (
+                  <TableCell key={header as string} scope="row">
+                    {item[header] as React.ReactNode}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
@@ -67,4 +76,4 @@ const CitiesDataGrid: FC<CitiesDataGridProps> = ({
   );
 };
 
-export default CitiesDataGrid;
+export default DataGrid;
