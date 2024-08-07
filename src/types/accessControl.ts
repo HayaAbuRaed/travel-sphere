@@ -11,4 +11,5 @@ export type PageAccessName =
   | "Cart"
   | "Checkout"
   | "Cities"
-  | "Rooms";
+  | "Rooms"
+  | "Hotels";

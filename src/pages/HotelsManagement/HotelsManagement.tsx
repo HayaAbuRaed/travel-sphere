@@ -9,35 +9,44 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { FC, useState } from "react";
 import DataGrid from "src/containers/DataGrid";
-import useGetHotelRooms from "./hooks/useGetHotelRooms";
-import { FilterConfigState, RoomRow } from "./types";
-import { filterByKey, mapRoomsToTableData } from "./utils";
+import useGetHotels from "./hooks/useGetHotels";
+import { FilterConfigState, HotelData } from "./types";
+import { filterByKey, mapHotelsToTableData } from "./utils";
+import { Hotel } from "./API/types";
 
-const RoomsManagement = () => {
+const HotelsManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
-    key: "type",
+    key: "name",
     value: "",
   });
-
-  const { rooms, isFetching } = useGetHotelRooms();
+  const { hotels, isFetching } = useGetHotels();
 
   if (isFetching) return <h1>Loading...</h1>;
 
-  if (!rooms) return null;
+  if (!hotels) return null;
 
-  const roomsData = mapRoomsToTableData(rooms);
-
-  const filteredRoomsData = filterByKey(
-    roomsData,
+  const filteredHotels = filterByKey(
+    hotels,
     filterConfig.key,
     filterConfig.value
   );
 
+  const hotelsData = mapHotelsToTableData(filteredHotels);
+
+  const headers: (keyof HotelData)[] = [
+    "id",
+    "name",
+    "description",
+    "hotelType",
+    "starRating",
+    "location",
+  ];
+
   const handleSelectChange = (event: SelectChangeEvent) => {
     setFilterConfig({
-      key: event.target.value as keyof RoomRow,
+      key: event.target.value as keyof Hotel,
       value: filterConfig?.value ?? "",
     });
   };
@@ -57,7 +66,7 @@ const RoomsManagement = () => {
         flexDirection={{ sm: "row" }}
         alignItems={{ sm: "center" }}
       >
-        <Typography variant="h4">Rooms</Typography>
+        <Typography variant="h4">Hotels</Typography>
         <Stack
           flexDirection={{ sm: "row" }}
           alignItems={{ sm: "center" }}
@@ -75,7 +84,7 @@ const RoomsManagement = () => {
               onChange={handleSelectChange}
               label="Filter By"
             >
-              {Object.keys(roomsData[0]).map((key) => (
+              {Object.keys(hotels[0]).map((key) => (
                 <MenuItem key={key} value={key}>
                   {key as string}
                 </MenuItem>
@@ -91,22 +100,10 @@ const RoomsManagement = () => {
           />
         </Stack>
       </Stack>
-      <DataGrid
-        data={filteredRoomsData}
-        headers={[
-          "id",
-          "number",
-          "type",
-          "price ($)",
-          "# adults",
-          "# children",
-          "available?",
-          "amenities",
-          "photo",
-        ]}
-      />
+
+      <DataGrid data={hotelsData} headers={headers} />
     </Grid>
   );
 };
 
-export default RoomsManagement;
+export default HotelsManagement;

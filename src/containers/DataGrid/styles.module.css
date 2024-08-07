@@ -1,6 +1,6 @@
-.tableHeaderCell:last-child {
+/* .tableHeaderCell:last-child {
   text-align: center;
-}
+} */
 
 .tableHeaderCell {
   text-transform: capitalize;

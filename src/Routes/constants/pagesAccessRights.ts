@@ -8,4 +8,5 @@ export const pagesAccessRights = new Map<PageAccessName, PageAccessRight>([
   ["Checkout", { role: "User" }],
   ["Cities", { role: "Admin" }],
   ["Rooms", { role: "Admin" }],
+  ["Hotels", { role: "Admin" }],
 ]);
