@@ -14,7 +14,7 @@ const Map: FC<MapProps> = ({ position }) => {
       style={{
         borderRadius: 4,
         border: "1px solid #ccc",
-        width: "100%",
+        minWidth: 200,
         height: 200,
       }}
     >

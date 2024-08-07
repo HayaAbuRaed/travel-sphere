@@ -23,9 +23,10 @@ const CitiesManagement: FC = () => {
     value: "",
   });
 
-  const { cities, isFetching } = useGetCities();
+  const { cities, isFetching, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useGetCities();
 
-  if (isFetching) return <h1>Loading...</h1>;
+  if (isFetching && !isFetchingNextPage) return <h1>Loading...</h1>;
 
   if (!cities) return null;
 
@@ -50,7 +51,7 @@ const CitiesManagement: FC = () => {
   };
 
   return (
-    <Grid container px={{ sm: 3.5, md: 7 }} py={4} rowGap={3}>
+    <Grid container px={{ xs: 3.5, md: 7 }} py={4} rowGap={3}>
       <Stack
         width="100%"
         gap={1}
@@ -97,6 +98,8 @@ const CitiesManagement: FC = () => {
       <DataGrid
         data={filteredCities}
         headers={["id", "name", "description"] as (keyof City)[]}
+        loadMore={fetchNextPage}
+        hasMore={hasNextPage}
       />
     </Grid>
   );

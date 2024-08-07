@@ -21,9 +21,10 @@ const HotelsManagement: FC = () => {
     key: "name",
     value: "",
   });
-  const { hotels, isFetching } = useGetHotels();
+  const { hotels, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useGetHotels();
 
-  if (isFetching) return <h1>Loading...</h1>;
+  if (isFetching && !isFetchingNextPage) return <h1>Loading...</h1>;
 
   if (!hotels) return null;
 
@@ -59,7 +60,7 @@ const HotelsManagement: FC = () => {
   };
 
   return (
-    <Grid container px={{ sm: 3.5, md: 7 }} py={4} rowGap={3}>
+    <Grid container px={{ xs: 3.5, md: 7 }} py={4} rowGap={3}>
       <Stack
         width="100%"
         gap={1}
@@ -101,7 +102,12 @@ const HotelsManagement: FC = () => {
         </Stack>
       </Stack>
 
-      <DataGrid data={hotelsData} headers={headers} />
+      <DataGrid
+        data={hotelsData}
+        headers={headers}
+        loadMore={fetchNextPage}
+        hasMore={hasNextPage}
+      />
     </Grid>
   );
 };

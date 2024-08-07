@@ -1,7 +1,9 @@
 import axios from "src/API/axios";
 import { City } from "./types";
 
-export const getCitiesData = async () => {
-  const response = await axios.get<City[]>("/cities");
+export const getCitiesData = async (pageNumber: number, pageSize: number) => {
+  const response = await axios.get<City[]>(
+    `/cities?pageSize=${pageSize}&pageNumber=${pageNumber}`
+  );
   return response.data;
 };

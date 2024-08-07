@@ -14,6 +14,7 @@ import DataGrid from "src/containers/DataGrid";
 import useGetHotelRooms from "./hooks/useGetHotelRooms";
 import { FilterConfigState, RoomRow } from "./types";
 import { filterByKey, mapRoomsToTableData } from "./utils";
+import travelSphereTheme from "src/style/travelSphereTheme";
 
 const RoomsManagement = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -50,7 +51,13 @@ const RoomsManagement = () => {
   };
 
   return (
-    <Grid container px={{ sm: 3.5, md: 7 }} py={4} rowGap={3}>
+    <Grid
+      container
+      px={{ xs: 3.5, md: 7 }}
+      py={4}
+      rowGap={3}
+      sx={{ ...travelSphereTheme.mixins.niceScroll() }}
+    >
       <Stack
         width="100%"
         gap={1}
@@ -104,6 +111,8 @@ const RoomsManagement = () => {
           "amenities",
           "photo",
         ]}
+        loadMore={() => {}}
+        hasMore={false}
       />
     </Grid>
   );
