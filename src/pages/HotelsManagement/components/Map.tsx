@@ -8,6 +8,7 @@ import { MapProps } from "../types";
 const Map: FC<MapProps> = ({ position }) => {
   return (
     <MapContainer
+      key={position.toString()}
       center={position}
       zoom={13}
       scrollWheelZoom={false}

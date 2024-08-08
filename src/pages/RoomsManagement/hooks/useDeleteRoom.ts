@@ -15,13 +15,13 @@ const useDeleteRoom = () => {
   const { mutate: removeRoom, isPending } = useMutation({
     mutationFn: deleteRoom,
 
-    onSuccess: (deletedCityId: number) => {
+    onSuccess: (deletedRoomId: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       queryClient.setQueryData([ROOMS_QUERY_KEY], (oldData: any) => {
         if (!oldData || !oldData.pages) return oldData;
 
         const updatedPages = oldData.pages.map((page: RoomRow[]) =>
-          page.filter((city) => city.id !== deletedCityId)
+          page.filter((room) => room.id !== deletedRoomId)
         );
 
         return { ...oldData, pages: updatedPages };
@@ -29,7 +29,7 @@ const useDeleteRoom = () => {
 
       dispatch(
         showSuccessSnackbar({
-          message: "City Deleted Successfully!",
+          message: "Room Deleted Successfully!",
         })
       );
     },
@@ -37,7 +37,7 @@ const useDeleteRoom = () => {
     onError: () => {
       dispatch(
         showErrorSnackbar({
-          message: "City cannot be deleted.",
+          message: "Room cannot be deleted.",
         })
       );
     },
