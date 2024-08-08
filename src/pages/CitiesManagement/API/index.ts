@@ -7,3 +7,8 @@ export const getCitiesData = async (pageNumber: number, pageSize: number) => {
   );
   return response.data;
 };
+
+export const deleteCity = async (id: number) => {
+  await axios.delete(`/cities/${id}`);
+  return id;
+};

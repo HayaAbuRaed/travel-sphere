@@ -1,3 +1,4 @@
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Grid,
   Paper,
@@ -9,6 +10,7 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import styles from "./styles.module.css";
@@ -20,6 +22,7 @@ const DataGrid = <T,>({
   headers,
   loadMore,
   hasMore,
+  onDeletion,
 }: DataGridProps<T>) => {
   const [sortConfig, setSortConfig] = useState<SortConfigState<T> | null>(null);
 
@@ -36,6 +39,12 @@ const DataGrid = <T,>({
     }
   };
 
+  const handleDelete =
+    (item: T) => (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      onDeletion?.(item);
+    };
+
   return (
     <Grid container justifyContent="center" rowGap={3}>
       <TableContainer component={Paper}>
@@ -50,10 +59,15 @@ const DataGrid = <T,>({
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                {headers.map((header) => (
+                {[...headers, "action"].map((header) => (
                   <TableCell
                     key={header as string}
                     className={styles.tableHeaderCell}
+                    sx={{
+                      "&:last-child .MuiTableSortLabel-icon": {
+                        display: "none",
+                      },
+                    }}
                   >
                     <TableSortLabel
                       active={sortConfig?.key === header}
@@ -62,7 +76,7 @@ const DataGrid = <T,>({
                           ? sortConfig.direction
                           : "asc"
                       }
-                      onClick={() => handleSort(header)}
+                      onClick={() => handleSort(header as keyof T)}
                     >
                       {header as string}
                     </TableSortLabel>
@@ -87,6 +101,15 @@ const DataGrid = <T,>({
                       {item[header] as React.ReactNode}
                     </TableCell>
                   ))}
+                  <TableCell align="center">
+                    <IconButton
+                      aria-label="delete"
+                      onClick={handleDelete(item)}
+                      color="error"
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

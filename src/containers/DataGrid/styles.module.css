@@ -1,3 +1,10 @@
+.tableHeaderCell:last-child {
+  text-align: center;
+}
+.tableHeaderCell:last-child .MuiTableSortLabel-icon {
+  display: none;
+}
+
 .tableHeaderCell {
   text-transform: capitalize;
 }
