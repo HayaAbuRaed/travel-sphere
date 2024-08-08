@@ -16,3 +16,8 @@ export interface FilterConfigState {
   key: keyof RoomRow;
   value: string;
 }
+
+export interface AddRoomDialogProps {
+  open: boolean;
+  onClose: () => void;
+}

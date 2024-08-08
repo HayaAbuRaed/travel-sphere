@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
 import { useAppDispatch } from "src/store/hooks";
 import { getHotelRooms } from "../API";
-import { HOTEL_ROOMS_QUERY_KEY } from "../constants";
+import { ROOMS_QUERY_KEY } from "../constants";
 
 const useGetHotelRooms = (id: number = 5) => {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ const useGetHotelRooms = (id: number = 5) => {
     error,
   } = useQuery({
     queryFn: () => getHotelRooms(id),
-    queryKey: [HOTEL_ROOMS_QUERY_KEY, id],
+    queryKey: [ROOMS_QUERY_KEY, id],
   });
 
   useEffect(() => {

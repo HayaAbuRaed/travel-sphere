@@ -14,3 +14,15 @@ export interface Hotel {
   latitude: number;
   longitude: number;
 }
+
+export interface CreateRoomRequest {
+  hotelId: number;
+  roomNumber: string;
+  cost: number;
+}
+
+export interface CreateRoomResponse {
+  id: number;
+  roomNumber: string;
+  cost: number;
+}
