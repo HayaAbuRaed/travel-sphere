@@ -1,3 +1,5 @@
+import { AddCityRequest } from "./API/types";
+
 export const CITIES_QUERY_KEY = "cities";
 
 export enum DialogType {
@@ -5,3 +7,8 @@ export enum DialogType {
   EDIT = "EDIT",
   DELETE = "DELETE",
 }
+
+export const initialValues: AddCityRequest = {
+  name: "",
+  description: "",
+};

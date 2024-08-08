@@ -3,3 +3,8 @@ export interface City {
   name: string;
   description: string;
 }
+
+export interface AddCityRequest {
+  name: string;
+  description: string;
+}

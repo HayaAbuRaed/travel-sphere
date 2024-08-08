@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   Grid,
   InputLabel,
@@ -19,6 +20,8 @@ import DataGrid from "src/containers/DataGrid";
 import useDeleteCity from "./hooks/useDeleteCity";
 import ConfirmDialog from "src/containers/Dialogs/ConfirmDialog";
 import { DialogType } from "./constants";
+import AddCityDialog from "./components/AddCityDialog";
+import AddIcon from "@mui/icons-material/Add";
 
 const CitiesManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -64,6 +67,8 @@ const CitiesManagement: FC = () => {
     setOpenDialog(DialogType.DELETE);
   };
 
+  const handleOpenAddDialog = () => setOpenDialog(DialogType.ADD);
+
   const handleCloseDialog = () => setOpenDialog(null);
 
   return (
@@ -84,6 +89,15 @@ const CitiesManagement: FC = () => {
             gap={1}
             ml={{ sm: "auto" }}
           >
+            <Button
+              variant="outlined"
+              color="secondary"
+              startIcon={<AddIcon />}
+              onClick={handleOpenAddDialog}
+              sx={{ height: 56 }}
+            >
+              Add City
+            </Button>
             <FormControl
               variant="filled"
               color="secondary"
@@ -127,6 +141,11 @@ const CitiesManagement: FC = () => {
         msg={"⚠️ Are you sure you want to delete this city?"}
         onClose={handleCloseDialog}
         onConfirm={() => removeCity(selectedCity?.id ?? -1)}
+      />
+
+      <AddCityDialog
+        open={openDialog === DialogType.ADD}
+        onClose={handleCloseDialog}
       />
     </>
   );

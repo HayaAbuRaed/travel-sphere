@@ -10,3 +10,8 @@ export interface FilterConfigState {
 export interface CitiesDataGridProps {
   cities: City[];
 }
+
+export interface AddCityDialogProps {
+  open: boolean;
+  onClose: () => void;
+}
