@@ -22,6 +22,7 @@ import useDeleteHotel from "./hooks/useDeleteHotel";
 import AddIcon from "@mui/icons-material/Add";
 import AddHotelDialog from "./components/AddHotelDialog";
 import UpdateHotelDialog from "./components/UpdateHotelDialog";
+import Skeleton from "src/containers/DataGrid/Skeleton";
 
 const HotelsManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -37,10 +38,6 @@ const HotelsManagement: FC = () => {
     useGetHotels();
 
   const { removeHotel } = useDeleteHotel();
-
-  if (isFetching && !isFetchingNextPage) return <h1>Loading...</h1>;
-
-  if (!hotels) return null;
 
   const filteredHotels = filterByKey(
     hotels,
@@ -130,7 +127,7 @@ const HotelsManagement: FC = () => {
                 onChange={handleSelectChange}
                 label="Filter By"
               >
-                {Object.keys(hotels[0]).map((key) => (
+                {Object.keys(hotels[0] ?? []).map((key) => (
                   <MenuItem key={key} value={key}>
                     {key as string}
                   </MenuItem>
@@ -147,14 +144,18 @@ const HotelsManagement: FC = () => {
           </Stack>
         </Stack>
 
-        <DataGrid
-          data={hotelsData}
-          headers={headers}
-          loadMore={fetchNextPage}
-          hasMore={hasNextPage}
-          onDeletion={handleOpenDeleteDialog}
-          onRowClick={handleRowClick}
-        />
+        {isFetching && !isFetchingNextPage && <Skeleton />}
+
+        {!isFetching && hotels && (
+          <DataGrid
+            data={hotelsData}
+            headers={headers}
+            loadMore={fetchNextPage}
+            hasMore={hasNextPage}
+            onDeletion={handleOpenDeleteDialog}
+            onRowClick={handleRowClick}
+          />
+        )}
       </Grid>
 
       <ConfirmDialog

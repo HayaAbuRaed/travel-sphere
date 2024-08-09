@@ -21,6 +21,7 @@ import { FilterConfigState, RoomRow } from "./types";
 import { filterByKey, mapRoomsToTableData } from "./utils";
 import AddIcon from "@mui/icons-material/Add";
 import AddRoomDialog from "./components/AddRoomDialog";
+import Skeleton from "src/containers/DataGrid/Skeleton";
 
 const RoomsManagement = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -36,11 +37,7 @@ const RoomsManagement = () => {
 
   const { removeRoom } = useDeleteRoom();
 
-  if (isFetching) return <h1>Loading...</h1>;
-
-  if (!rooms) return null;
-
-  const roomsData = mapRoomsToTableData(rooms);
+  const roomsData = mapRoomsToTableData(rooms ?? []);
 
   const filteredRoomsData = filterByKey(
     roomsData,
@@ -113,7 +110,7 @@ const RoomsManagement = () => {
                 onChange={handleSelectChange}
                 label="Filter By"
               >
-                {Object.keys(roomsData[0]).map((key) => (
+                {Object.keys(roomsData[0] ?? []).map((key) => (
                   <MenuItem key={key} value={key}>
                     {key as string}
                   </MenuItem>
@@ -129,23 +126,28 @@ const RoomsManagement = () => {
             />
           </Stack>
         </Stack>
-        <DataGrid
-          data={filteredRoomsData}
-          headers={[
-            "id",
-            "number",
-            "type",
-            "price ($)",
-            "# adults",
-            "# children",
-            "available?",
-            "amenities",
-            "photo",
-          ]}
-          loadMore={() => {}}
-          hasMore={false}
-          onDeletion={handleOpenDeleteDialog}
-        />
+
+        {isFetching && <Skeleton />}
+
+        {!isFetching && rooms && (
+          <DataGrid
+            data={filteredRoomsData}
+            headers={[
+              "id",
+              "number",
+              "type",
+              "price ($)",
+              "# adults",
+              "# children",
+              "available?",
+              "amenities",
+              "photo",
+            ]}
+            loadMore={() => {}}
+            hasMore={false}
+            onDeletion={handleOpenDeleteDialog}
+          />
+        )}
       </Grid>
 
       <AddRoomDialog

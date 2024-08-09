@@ -23,6 +23,7 @@ import { DialogType } from "./constants";
 import AddCityDialog from "./components/AddCityDialog";
 import AddIcon from "@mui/icons-material/Add";
 import UpdateCityDialog from "./components/UpdateCityDialog";
+import Skeleton from "src/containers/DataGrid/Skeleton";
 
 const CitiesManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -38,10 +39,6 @@ const CitiesManagement: FC = () => {
     useGetCities();
 
   const { removeCity } = useDeleteCity();
-
-  if (isFetching && !isFetchingNextPage) return <h1>Loading...</h1>;
-
-  if (!cities) return null;
 
   const filteredCities = filterCities(
     cities,
@@ -119,9 +116,15 @@ const CitiesManagement: FC = () => {
                 label="Filter By"
               >
                 <MenuItem value="all">All</MenuItem>
-                <MenuItem value="id">ID</MenuItem>
-                <MenuItem value="name">Name</MenuItem>
-                <MenuItem value="description">Description</MenuItem>
+                {Object.keys(cities[0] ?? []).map((key) => (
+                  <MenuItem
+                    key={key}
+                    value={key}
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    {key as string}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <TextField
@@ -135,14 +138,18 @@ const CitiesManagement: FC = () => {
           </Stack>
         </Stack>
 
-        <DataGrid
-          data={filteredCities}
-          headers={["id", "name", "description"] as (keyof City)[]}
-          loadMore={fetchNextPage}
-          hasMore={hasNextPage}
-          onDeletion={handleOpenDeleteDialog}
-          onRowClick={handleOpenUpdateDialog}
-        />
+        {isFetching && !isFetchingNextPage && <Skeleton />}
+
+        {!isFetching && cities && (
+          <DataGrid
+            data={filteredCities}
+            headers={["id", "name", "description"] as (keyof City)[]}
+            loadMore={fetchNextPage}
+            hasMore={hasNextPage}
+            onDeletion={handleOpenDeleteDialog}
+            onRowClick={handleOpenUpdateDialog}
+          />
+        )}
       </Grid>
 
       <ConfirmDialog
