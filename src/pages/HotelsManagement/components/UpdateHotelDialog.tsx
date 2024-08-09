@@ -118,7 +118,6 @@ const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
               disableElevation
               startIcon={<UpdateIcon />}
               loadingPosition="start"
-              // onClick={handleSubmit}
               sx={{ mt: "auto" }}
             >
               Update

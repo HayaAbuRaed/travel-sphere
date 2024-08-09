@@ -37,8 +37,8 @@ const AddCityDialog: FC<AddCityDialogProps> = ({ open, onClose }) => {
     <Dialog open={open} onClose={handleClose} fullWidth>
       <DialogTitle display="flex">
         Add City
-        <IconButton size="small" sx={{ ml: "auto" }}>
-          <CrossIcon onClick={handleClose} fontSize="small" />
+        <IconButton size="small" sx={{ ml: "auto" }} onClick={handleClose}>
+          <CrossIcon fontSize="small" />
         </IconButton>
       </DialogTitle>
       <Divider />

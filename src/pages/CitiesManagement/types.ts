@@ -15,3 +15,7 @@ export interface AddCityDialogProps {
   open: boolean;
   onClose: () => void;
 }
+
+export interface UpdateCityDialogProps extends AddCityDialogProps {
+  city: City;
+}

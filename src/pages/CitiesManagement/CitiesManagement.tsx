@@ -22,6 +22,7 @@ import ConfirmDialog from "src/containers/Dialogs/ConfirmDialog";
 import { DialogType } from "./constants";
 import AddCityDialog from "./components/AddCityDialog";
 import AddIcon from "@mui/icons-material/Add";
+import UpdateCityDialog from "./components/UpdateCityDialog";
 
 const CitiesManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -64,12 +65,20 @@ const CitiesManagement: FC = () => {
 
   const handleOpenDeleteDialog = (city: City) => {
     setSelectedCity(city);
-    setOpenDialog(DialogType.DELETE);
+    setTimeout(() => setOpenDialog(DialogType.DELETE));
+  };
+
+  const handleOpenUpdateDialog = (city: City) => {
+    setSelectedCity(city);
+    setOpenDialog(DialogType.UPDATE);
   };
 
   const handleOpenAddDialog = () => setOpenDialog(DialogType.ADD);
 
-  const handleCloseDialog = () => setOpenDialog(null);
+  const handleCloseDialog = () => {
+    setOpenDialog(null);
+    setSelectedCity(null);
+  };
 
   return (
     <>
@@ -132,6 +141,7 @@ const CitiesManagement: FC = () => {
           loadMore={fetchNextPage}
           hasMore={hasNextPage}
           onDeletion={handleOpenDeleteDialog}
+          onRowClick={handleOpenUpdateDialog}
         />
       </Grid>
 
@@ -147,6 +157,14 @@ const CitiesManagement: FC = () => {
         open={openDialog === DialogType.ADD}
         onClose={handleCloseDialog}
       />
+
+      {selectedCity && (
+        <UpdateCityDialog
+          city={selectedCity}
+          open={openDialog === DialogType.UPDATE}
+          onClose={handleCloseDialog}
+        />
+      )}
     </>
   );
 };
