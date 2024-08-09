@@ -146,7 +146,7 @@ const HotelsManagement: FC = () => {
 
         {isFetching && !isFetchingNextPage && <Skeleton />}
 
-        {!isFetching && hotels && (
+        {!(isFetching && !isFetchingNextPage) && (
           <DataGrid
             data={hotelsData}
             headers={headers}

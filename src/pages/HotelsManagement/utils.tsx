@@ -28,7 +28,7 @@ export const filterByKey = (
 
   return hotels.filter((room) => {
     if (typeof room[key as keyof Hotel] === "number")
-      return room[key as keyof Hotel] === parseInt(trimmedValue);
+      return room[key as keyof Hotel] === parseFloat(trimmedValue);
 
     return String(room[key as keyof Hotel])
       .toLowerCase()

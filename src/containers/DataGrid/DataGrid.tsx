@@ -2,6 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Grid,
   Paper,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -11,11 +12,21 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
+import { FC, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { BarLoader } from "react-spinners";
 import styles from "./styles.module.css";
 import { DataGridProps, SortConfigState } from "./types";
 import { sortData } from "./utils";
+import theme from "src/style/travelSphereTheme";
+
+const Loader: FC = () => {
+  return (
+    <Stack width="100%" p={1}>
+      <BarLoader width="100%" color={theme.palette.secondary.main} />
+    </Stack>
+  );
+};
 
 const DataGrid = <T,>({
   data,
@@ -54,7 +65,7 @@ const DataGrid = <T,>({
           dataLength={data.length}
           next={loadMore}
           hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
+          loader={data.length >= 10 && <Loader />}
           scrollableTarget="scrollableDiv"
           className={styles.niceScroll}
         >
