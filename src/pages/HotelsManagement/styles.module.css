@@ -1,0 +1,9 @@
+.form,
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogContent {
+  gap: 1rem;
+}

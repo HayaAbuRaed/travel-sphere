@@ -17,6 +17,7 @@ import { StyledBadge } from "./styled";
 import { useAppSelector } from "src/store/hooks";
 import { selectCartTotalItems } from "src/features/cart/selectors";
 import { useNavigate } from "react-router-dom";
+import { selectIsUserAdmin } from "src/features/user";
 
 const Navbar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -24,6 +25,7 @@ const Navbar: FC = () => {
   const navigate = useNavigate();
 
   const cartItemsCount = useAppSelector(selectCartTotalItems);
+  const isAdmin = useAppSelector(selectIsUserAdmin);
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -74,14 +76,16 @@ const Navbar: FC = () => {
           </Box> */}
 
           <Stack ml="auto" flexDirection="row" alignItems="center" gap={1.5}>
-            <IconButton
-              onClick={handleCartClick}
-              sx={{ color: "text.secondary" }}
-            >
-              <StyledBadge badgeContent={cartItemsCount} color="error">
-                <ShoppingCartIcon />
-              </StyledBadge>
-            </IconButton>
+            {!isAdmin && (
+              <IconButton
+                onClick={handleCartClick}
+                sx={{ color: "text.secondary" }}
+              >
+                <StyledBadge badgeContent={cartItemsCount} color="error">
+                  <ShoppingCartIcon />
+                </StyledBadge>
+              </IconButton>
+            )}
             <UserSegment />
           </Stack>
         </Toolbar>

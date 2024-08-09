@@ -1,0 +1,27 @@
+.tableHeaderCell:last-child {
+  text-align: center;
+}
+
+.tableHeaderCell {
+  text-transform: capitalize;
+}
+
+.tableRow:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.form,
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  height: 100%;
+}
+
+.dialogContent {
+  padding-block: 2rem;
+  gap: 1.75rem;
+}

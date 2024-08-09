@@ -1,5 +1,6 @@
 import { carouselResponsive } from "src/constants/carousel";
 import styles from "./style.module.css";
+import { ApexOptions } from "apexcharts";
 
 export const FEATURED_DEALS_QUERY_KEY = "featuredDeals";
 
@@ -29,4 +30,24 @@ export const recentlyVisitedCarouselProps = {
   removeArrowOnDeviceType: ["tablet", "mobile"],
   renderDotsOutside: true,
   infinite: false,
+};
+
+export const areaChartOptions: ApexOptions = {
+  chart: {
+    height: 450,
+    type: "area",
+    toolbar: {
+      show: false,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+    width: 2,
+  },
+  grid: {
+    strokeDashArray: 0,
+  },
 };

@@ -23,6 +23,7 @@ const LoginForm = () => {
             variant="filled"
             color="secondary"
             fullWidth
+            autoFocus
           />
           <PasswordField
             name="password"

@@ -30,3 +30,10 @@ export const formatDisplayDate = (date: string) => {
     year: "numeric",
   });
 };
+
+export const getXAxisCategories = (slot: string) =>
+  slot === "month"
+    ? Array.from({ length: 12 }, (_, i) =>
+        new Date(0, i).toLocaleString("en", { month: "short" })
+      )
+    : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
