@@ -17,6 +17,11 @@ const travelSphereTheme = createTheme({
   typography: {
     fontFamily: "Sora, sans-serif",
   },
+  transitions: {
+    easing: {
+      sharp: "cubic-bezier(0.4, 0, 0.6, 1)",
+    },
+  },
 });
 
 export default travelSphereTheme;

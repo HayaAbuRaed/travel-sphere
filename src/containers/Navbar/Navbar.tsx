@@ -1,6 +1,6 @@
+import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
-  AppBar,
   Avatar,
   Container,
   IconButton,
@@ -8,37 +8,28 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import icon from "src/assets/icon.png";
-import MobileNavMenu from "./components/MobileNavMenu";
+import { selectCartTotalItems } from "src/features/cart/selectors";
+import { selectIsUserAdmin } from "src/features/user";
+import { useAppSelector } from "src/store/hooks";
 import UserSegment from "./components/UserSegment";
 import styles from "./style.module.css";
-import { StyledBadge } from "./styled";
-import { useAppSelector } from "src/store/hooks";
-import { selectCartTotalItems } from "src/features/cart/selectors";
-import { useNavigate } from "react-router-dom";
-import { selectIsUserAdmin } from "src/features/user";
+import { AppBar, StyledBadge } from "./styled";
+import { NavbarProps } from "./types";
 
-const Navbar: FC = () => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
+const Navbar: FC<NavbarProps> = ({ isSideBarOpen, handleOpenSideBar }) => {
   const navigate = useNavigate();
 
   const cartItemsCount = useAppSelector(selectCartTotalItems);
   const isAdmin = useAppSelector(selectIsUserAdmin);
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
   const handleCartClick = () => navigate("/me/cart");
 
   return (
     <AppBar
+      open={isSideBarOpen}
       position="static"
       elevation={0}
       color="transparent"
@@ -46,11 +37,18 @@ const Navbar: FC = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <MobileNavMenu
-            anchorElNav={anchorElNav}
-            handleCloseNavMenu={handleCloseNavMenu}
-            handleOpenNavMenu={handleOpenNavMenu}
-          />
+          {!isSideBarOpen && (
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenSideBar}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
 
           <Typography
             variant="h6"
