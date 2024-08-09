@@ -1,4 +1,4 @@
-import AddIcon from "@mui/icons-material/Add";
+import UpdateIcon from "@mui/icons-material/TaskAlt";
 import CrossIcon from "@mui/icons-material/Close";
 import LoadingButton from "@mui/lab/LoadingButton";
 import {
@@ -15,13 +15,17 @@ import { FC, useEffect } from "react";
 import TextField from "src/components/Fields/TextField";
 import { Dialog } from "src/containers/Dialogs";
 import { LeftTransition } from "src/containers/Dialogs/Transitions";
-import useAddHotelForm from "../hooks/useAddHotelForm";
+import useUpdateHotelForm from "../hooks/useUpdateHotelForm";
 import styles from "../styles.module.css";
-import { AddHotelDialogProps } from "../types";
+import { UpdateHotelDialogProps } from "../types";
 import Map from "./Map";
 
-const AddHotelDialog: FC<AddHotelDialogProps> = ({ open, onClose }) => {
-  const { formikProps, isAdding, addStatus } = useAddHotelForm();
+const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
+  hotel,
+  open,
+  onClose,
+}) => {
+  const { formikProps, isUpdating } = useUpdateHotelForm(hotel);
 
   const { dirty, isValid, resetForm, values, setValues } = formikProps;
 
@@ -33,12 +37,12 @@ const AddHotelDialog: FC<AddHotelDialogProps> = ({ open, onClose }) => {
   };
 
   useEffect(() => {
-    if (!isAdding && addStatus === "success") {
+    if (!isUpdating) {
       resetForm();
       onClose();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAdding]);
+  }, [isUpdating]);
 
   return (
     <Dialog
@@ -49,7 +53,7 @@ const AddHotelDialog: FC<AddHotelDialogProps> = ({ open, onClose }) => {
       TransitionComponent={LeftTransition}
     >
       <DialogTitle display="flex">
-        Add Hotel
+        Update Hotel
         <IconButton size="small" sx={{ ml: "auto" }} onClick={handleClose}>
           <CrossIcon fontSize="small" />
         </IconButton>
@@ -108,16 +112,16 @@ const AddHotelDialog: FC<AddHotelDialogProps> = ({ open, onClose }) => {
           <DialogActions sx={{ pr: 3, mt: "auto" }}>
             <LoadingButton
               type="submit"
-              loading={isAdding}
+              loading={isUpdating}
               disabled={!dirty || !isValid}
               variant="contained"
               disableElevation
-              startIcon={<AddIcon />}
+              startIcon={<UpdateIcon />}
               loadingPosition="start"
               // onClick={handleSubmit}
               sx={{ mt: "auto" }}
             >
-              Add
+              Update
             </LoadingButton>
           </DialogActions>
         </Form>
@@ -126,4 +130,4 @@ const AddHotelDialog: FC<AddHotelDialogProps> = ({ open, onClose }) => {
   );
 };
 
-export default AddHotelDialog;
+export default UpdateHotelDialog;

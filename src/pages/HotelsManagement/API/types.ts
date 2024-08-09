@@ -9,3 +9,7 @@ export interface Hotel {
 }
 
 export interface CreateHotelRequest extends Omit<Hotel, "id"> {}
+
+export interface UpdateHotelRequest extends CreateHotelRequest {
+  hotelId: number;
+}

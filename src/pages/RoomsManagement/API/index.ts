@@ -1,7 +1,12 @@
 import axios from "src/API/axios";
 import { RoomResponse } from "src/types/room";
 import { formatDate } from "src/utils/search";
-import { CreateRoomRequest, CreateRoomResponse, Hotel } from "./types";
+import {
+  CreateRoomRequest,
+  CreateRoomResponse,
+  Hotel,
+  UpdateRoomRequest,
+} from "./types";
 
 export const getHotelRooms = async (hotelId: number) => {
   const checkInDate = formatDate(new Date());
@@ -31,4 +36,9 @@ export const addRoom = async ({ hotelId, ...rest }: CreateRoomRequest) => {
     rest
   );
   return response.data;
+};
+
+export const updateRoom = async (id: number, data: UpdateRoomRequest) => {
+  await axios.put(`/rooms/${id}`, data);
+  return id;
 };

@@ -21,6 +21,7 @@ import { DialogType } from "./constants";
 import useDeleteHotel from "./hooks/useDeleteHotel";
 import AddIcon from "@mui/icons-material/Add";
 import AddHotelDialog from "./components/AddHotelDialog";
+import UpdateHotelDialog from "./components/UpdateHotelDialog";
 
 const HotelsManagement: FC = () => {
   const [filterConfig, setFilterConfig] = useState<FilterConfigState>({
@@ -30,7 +31,7 @@ const HotelsManagement: FC = () => {
 
   const [openDialog, setOpenDialog] = useState<DialogType | null>(null);
 
-  const [selectedCity, setSelectedCity] = useState<HotelData | null>(null);
+  const [selectedHotel, setSelectedHotel] = useState<HotelData | null>(null);
 
   const { hotels, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useGetHotels();
@@ -71,15 +72,27 @@ const HotelsManagement: FC = () => {
       value: event.target.value,
     });
   };
+  const handleOpenDialog = (dialogType: DialogType) =>
+    setOpenDialog(dialogType);
 
   const handleOpenDeleteDialog = (hotel: HotelData) => {
-    setSelectedCity(hotel);
-    setOpenDialog(DialogType.DELETE);
+    setSelectedHotel(hotel);
+    setTimeout(() => {
+      setOpenDialog(DialogType.DELETE);
+    });
   };
 
-  const handleOpenAddDialog = () => setOpenDialog(DialogType.ADD);
+  const handleRowClick = (hotel: HotelData) => {
+    setSelectedHotel(hotel);
+    setTimeout(() => {
+      setOpenDialog(DialogType.UPDATE);
+    });
+  };
 
   const handleCloseDialog = () => setOpenDialog(null);
+
+  console.log("selectedHotel", selectedHotel);
+  console.log("openDialog", openDialog);
 
   return (
     <>
@@ -101,7 +114,7 @@ const HotelsManagement: FC = () => {
               variant="outlined"
               color="secondary"
               startIcon={<AddIcon />}
-              onClick={handleOpenAddDialog}
+              onClick={() => handleOpenDialog(DialogType.ADD)}
               sx={{ height: 56 }}
             >
               Add Hotel
@@ -140,20 +153,30 @@ const HotelsManagement: FC = () => {
           loadMore={fetchNextPage}
           hasMore={hasNextPage}
           onDeletion={handleOpenDeleteDialog}
+          onRowClick={handleRowClick}
         />
       </Grid>
+
       <ConfirmDialog
         open={openDialog === DialogType.DELETE}
         title="delete Hotel"
-        msg={"⚠️ Are you sure you want to delete this city?"}
+        msg={"⚠️ Are you sure you want to delete this hotel?"}
         onClose={handleCloseDialog}
-        onConfirm={() => removeHotel(selectedCity?.id ?? -1)}
+        onConfirm={() => removeHotel(selectedHotel?.id ?? -1)}
       />
 
       <AddHotelDialog
         open={openDialog === DialogType.ADD}
         onClose={handleCloseDialog}
       />
+
+      {selectedHotel && (
+        <UpdateHotelDialog
+          open={openDialog === DialogType.UPDATE}
+          onClose={handleCloseDialog}
+          hotel={selectedHotel}
+        />
+      )}
     </>
   );
 };

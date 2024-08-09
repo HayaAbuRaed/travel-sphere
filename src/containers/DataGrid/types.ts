@@ -3,7 +3,8 @@ export interface DataGridProps<T> {
   headers: (keyof T)[];
   loadMore: () => void;
   hasMore: boolean;
-  onDeletion?: (item: T) => void;
+  onDeletion: (item: T) => void;
+  onRowClick?: (item: T) => void;
 }
 
 export interface SortConfigState<T> {

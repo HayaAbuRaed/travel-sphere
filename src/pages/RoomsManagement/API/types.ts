@@ -26,3 +26,5 @@ export interface CreateRoomResponse {
   roomNumber: string;
   cost: number;
 }
+
+export interface UpdateRoomRequest extends CreateRoomRequest {}

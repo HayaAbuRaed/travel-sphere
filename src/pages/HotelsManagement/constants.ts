@@ -5,7 +5,7 @@ export const HOTELS_QUERY_KEY = "hotels";
 export enum DialogType {
   DELETE = "delete",
   ADD = "add",
-  EDIT = "edit",
+  UPDATE = "update",
 }
 
 export const initialValues: CreateHotelRequest = {

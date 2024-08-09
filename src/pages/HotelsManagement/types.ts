@@ -1,9 +1,8 @@
 import { LatLngExpression } from "leaflet";
 import { ReactNode } from "react";
 import { Hotel } from "./API/types";
-import { DialogProps } from "@mui/material";
 
-export interface HotelData extends Omit<Hotel, "longitude" | "latitude"> {
+export interface HotelData extends Hotel {
   location: ReactNode;
 }
 
@@ -21,6 +20,8 @@ export interface AddHotelDialogProps {
   onClose: () => void;
 }
 
-export interface StyledDialogProps extends DialogProps {
-  variant?: "center" | "left" | "right";
+export interface UpdateHotelDialogProps {
+  hotel: HotelData;
+  open: boolean;
+  onClose: () => void;
 }
