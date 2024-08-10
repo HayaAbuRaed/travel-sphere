@@ -37,7 +37,7 @@ const Checkout: FC = () => {
   if (!room) {
     return (
       <Stack
-        height="calc(100vh - 64px - 48px)"
+        height="calc(100vh - 64px)"
         justifyContent="center"
         alignItems="center"
       >
