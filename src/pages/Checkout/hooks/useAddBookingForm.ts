@@ -9,7 +9,7 @@ import useAddBookingAPI from "./useAddBookingAPI";
 
 const useAddBookingForm = (room: RoomResponse) => {
   const dispatch = useAppDispatch();
-  const { addNewBooking } = useAddBookingAPI();
+  const { addNewBooking, isPending } = useAddBookingAPI();
 
   const { roomId, roomType, roomNumber, price } = room;
 
@@ -37,7 +37,7 @@ const useAddBookingForm = (room: RoomResponse) => {
     onSubmit: submitForm,
   });
 
-  return { formikProps };
+  return { formikProps, isBooking: isPending };
 };
 
 export default useAddBookingForm;

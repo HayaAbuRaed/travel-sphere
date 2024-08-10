@@ -62,7 +62,7 @@ const RoomCard: FC<RoomCardProps> = ({ room }) => {
       variant="outlined"
       sx={{
         maxWidth: 400,
-        minHeight: 467.807,
+        minHeight: 460,
         borderRadius: 2,
         display: "flex",
         flexDirection: "column",

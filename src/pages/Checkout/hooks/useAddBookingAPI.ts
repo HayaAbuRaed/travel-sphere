@@ -8,7 +8,7 @@ import {
 
 const useAddBookingAPI = () => {
   const dispatch = useAppDispatch();
-  const { mutateAsync: addNewBooking } = useMutation({
+  const { mutateAsync: addNewBooking, isPending } = useMutation({
     mutationFn: addBooking,
     onSuccess: () => {
       dispatch(showSuccessSnackbar({ message: "Booking added successfully" }));
@@ -17,7 +17,7 @@ const useAddBookingAPI = () => {
       dispatch(showErrorSnackbar({ message: "Failed to add booking" }));
     },
   });
-  return { addNewBooking };
+  return { addNewBooking, isPending };
 };
 
 export default useAddBookingAPI;
