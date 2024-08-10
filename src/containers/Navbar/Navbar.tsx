@@ -1,39 +1,31 @@
+import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
   AppBar,
   Avatar,
+  Box,
   Container,
   IconButton,
   Stack,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import icon from "src/assets/icon.png";
-import MobileNavMenu from "./components/MobileNavMenu";
+import { selectCartTotalItems } from "src/features/cart/selectors";
+import { selectIsUserAdmin } from "src/features/user";
+import { useAppSelector } from "src/store/hooks";
 import UserSegment from "./components/UserSegment";
 import styles from "./style.module.css";
 import { StyledBadge } from "./styled";
-import { useAppSelector } from "src/store/hooks";
-import { selectCartTotalItems } from "src/features/cart/selectors";
-import { useNavigate } from "react-router-dom";
-import { selectIsUserAdmin } from "src/features/user";
+import { NavbarProps } from "./types";
 
-const Navbar: FC = () => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
+const Navbar: FC<NavbarProps> = ({ handleOpenSideBar }) => {
   const navigate = useNavigate();
 
   const cartItemsCount = useAppSelector(selectCartTotalItems);
   const isAdmin = useAppSelector(selectIsUserAdmin);
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
 
   const handleCartClick = () => navigate("/me/cart");
 
@@ -44,13 +36,21 @@ const Navbar: FC = () => {
       color="transparent"
       sx={{ borderBottom: "1px solid #eee" }}
     >
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{ pl: { xs: 1, sm: 2 }, pr: { xs: 1.5, sm: 2 } }}
+      >
         <Toolbar disableGutters>
-          <MobileNavMenu
-            anchorElNav={anchorElNav}
-            handleCloseNavMenu={handleCloseNavMenu}
-            handleOpenNavMenu={handleOpenNavMenu}
-          />
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenSideBar}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
 
           <Typography
             variant="h6"
@@ -60,22 +60,19 @@ const Navbar: FC = () => {
             className={styles.logo}
           >
             <Avatar src={icon} alt="TravelSphere" />
-            TravelSphere
+            <Box
+              className={`${isAdmin ? styles.smallerFont : styles.disappear}`}
+            >
+              TravelSphere
+            </Box>
           </Typography>
 
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            {PAGES.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box> */}
-
-          <Stack ml="auto" flexDirection="row" alignItems="center" gap={1.5}>
+          <Stack
+            ml="auto"
+            flexDirection="row"
+            alignItems="center"
+            gap={{ xs: 0.2, sm: 1.5 }}
+          >
             {!isAdmin && (
               <IconButton
                 onClick={handleCartClick}
