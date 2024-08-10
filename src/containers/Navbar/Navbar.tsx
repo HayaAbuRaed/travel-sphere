@@ -1,7 +1,9 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
+  AppBar,
   Avatar,
+  Box,
   Container,
   IconButton,
   Stack,
@@ -16,10 +18,10 @@ import { selectIsUserAdmin } from "src/features/user";
 import { useAppSelector } from "src/store/hooks";
 import UserSegment from "./components/UserSegment";
 import styles from "./style.module.css";
-import { AppBar, StyledBadge } from "./styled";
+import { StyledBadge } from "./styled";
 import { NavbarProps } from "./types";
 
-const Navbar: FC<NavbarProps> = ({ isSideBarOpen, handleOpenSideBar }) => {
+const Navbar: FC<NavbarProps> = ({ handleOpenSideBar }) => {
   const navigate = useNavigate();
 
   const cartItemsCount = useAppSelector(selectCartTotalItems);
@@ -29,26 +31,26 @@ const Navbar: FC<NavbarProps> = ({ isSideBarOpen, handleOpenSideBar }) => {
 
   return (
     <AppBar
-      open={isSideBarOpen}
       position="static"
       elevation={0}
       color="transparent"
       sx={{ borderBottom: "1px solid #eee" }}
     >
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{ pl: { xs: 1, sm: 2 }, pr: { xs: 1.5, sm: 2 } }}
+      >
         <Toolbar disableGutters>
-          {!isSideBarOpen && (
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenSideBar}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenSideBar}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
 
           <Typography
             variant="h6"
@@ -58,22 +60,19 @@ const Navbar: FC<NavbarProps> = ({ isSideBarOpen, handleOpenSideBar }) => {
             className={styles.logo}
           >
             <Avatar src={icon} alt="TravelSphere" />
-            TravelSphere
+            <Box
+              className={`${isAdmin ? styles.smallerFont : styles.disappear}`}
+            >
+              TravelSphere
+            </Box>
           </Typography>
 
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            {PAGES.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box> */}
-
-          <Stack ml="auto" flexDirection="row" alignItems="center" gap={1.5}>
+          <Stack
+            ml="auto"
+            flexDirection="row"
+            alignItems="center"
+            gap={{ xs: 0.2, sm: 1.5 }}
+          >
             {!isAdmin && (
               <IconButton
                 onClick={handleCartClick}

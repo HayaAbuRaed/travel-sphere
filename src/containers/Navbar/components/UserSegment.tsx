@@ -40,7 +40,14 @@ const UserSegment: FC = () => {
   };
 
   const UserAvatar = () => (
-    <Avatar style="shape" value={`t445${fullName}`} size={40} />
+    <Avatar
+      style="shape"
+      value={`t445${fullName}`}
+      border
+      borderColor="#ddd"
+      borderSize={1}
+      size={40}
+    />
   );
 
   return (
@@ -79,9 +86,10 @@ const UserSegment: FC = () => {
               onClick={handleLogOut}
               sx={{
                 color: "GrayText",
-                alignSelf: "flex-start",
                 ":hover": { color: "text.primary" },
+                justifyContent: "flex-start",
               }}
+              fullWidth
             >
               Log out
             </Button>

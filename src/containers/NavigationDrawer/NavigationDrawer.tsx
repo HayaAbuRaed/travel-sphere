@@ -1,30 +1,28 @@
 import {
-  Divider,
+  Avatar,
   Drawer,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
+  Typography,
 } from "@mui/material";
 import { FC } from "react";
-import { DrawerHeader } from "./styled";
-import { DRAWER_WIDTH } from "./constants";
-import { useTheme } from "@mui/material/styles";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
-export interface NavigationDrawerProps {
-  open: boolean;
-  handleDrawerClose: () => void;
-}
+import icon from "src/assets/icon.png";
+import { ADMIN_NAV_ITEMS, DRAWER_WIDTH, USER_NAV_ITEMS } from "./constants";
+import { NavigationDrawerProps } from "./types";
+import { useAppSelector } from "src/store/hooks";
+import { selectIsUserAdmin } from "src/features/user";
 
 const NavigationDrawer: FC<NavigationDrawerProps> = ({
   open,
   handleDrawerClose,
 }) => {
-  const theme = useTheme();
+  const isAdmin = useAppSelector(selectIsUserAdmin);
+
+  const navItems = isAdmin ? ADMIN_NAV_ITEMS : USER_NAV_ITEMS;
 
   return (
     <Drawer
@@ -36,41 +34,28 @@ const NavigationDrawer: FC<NavigationDrawerProps> = ({
           boxSizing: "border-box",
         },
       }}
-      variant="persistent"
-      anchor="left"
       open={open}
+      onClose={handleDrawerClose}
     >
-      <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
-          {theme.direction === "ltr" ? (
-            <ChevronLeftIcon />
-          ) : (
-            <ChevronRightIcon />
-          )}
-        </IconButton>
-      </DrawerHeader>
-      <Divider />
+      <Typography
+        variant="h6"
+        component={Stack}
+        direction="row"
+        alignItems="center"
+        gap={0.5}
+        p={1}
+        minHeight={65}
+        borderBottom="1px solid #eee"
+      >
+        <Avatar src={icon} alt="TravelSphere" />
+        TravelSphere
+      </Typography>
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+        {navItems.map(({ label, Icon, href }) => (
+          <ListItem key={label} disablePadding>
+            <ListItemButton sx={{ gap: 1 }} href={href}>
+              <ListItemIcon sx={{ minWidth: 0 }}>{Icon}</ListItemIcon>
+              <ListItemText primary={label} />
             </ListItemButton>
           </ListItem>
         ))}

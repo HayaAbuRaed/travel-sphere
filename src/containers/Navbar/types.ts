@@ -16,6 +16,5 @@ export interface AppBarProps extends MuiAppBarProps {
 }
 
 export interface NavbarProps {
-  isSideBarOpen: boolean;
   handleOpenSideBar: () => void;
 }
