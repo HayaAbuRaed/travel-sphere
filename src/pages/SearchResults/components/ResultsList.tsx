@@ -24,7 +24,7 @@ const ResultsList: FC = () => {
             key={index}
             variant="rectangular"
             height={250}
-            sx={{ borderRadius: 1 }}
+            sx={{ borderRadius: 1, width: { xs: 300, sm: 500 } }}
           />
         ))}
       </Stack>
@@ -47,6 +47,7 @@ const ResultsList: FC = () => {
     >
       {searchResults.map((hotel) => (
         <Box
+          key={`skeleton${hotel.hotelId}`}
           onClick={() => handleCardClick(hotel.hotelId)}
           sx={{ cursor: "pointer" }}
         >

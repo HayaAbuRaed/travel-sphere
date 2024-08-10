@@ -11,6 +11,7 @@ const CarouselSkeleton: FC = () => {
           key={index}
           variant="rectangular"
           height={400}
+          width="100%"
           sx={{ maxWidth: 450 }}
         />
       ))}
