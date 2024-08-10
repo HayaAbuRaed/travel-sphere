@@ -5,7 +5,7 @@ import { SearchResultsContextType, SearchResultsState } from "./types";
 export const initialState: SearchResultsState = {
   originalSearchResults: [],
   searchResults: [],
-  loading: true,
+  loading: false,
   filters: {
     priceRange: PRICE_RANGE_INITIAL_VALUES,
     starRating: null,
