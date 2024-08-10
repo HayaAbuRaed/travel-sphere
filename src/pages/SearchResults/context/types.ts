@@ -3,7 +3,7 @@ import { SORTING_OPTIONS } from "../constants";
 
 export interface SearchResultsState {
   originalSearchResults: SearchResponse[];
-  searchResults: SearchResponse[];
+  searchResults: SearchResponse[] | undefined;
   loading: boolean;
   filters: Filter;
 }
