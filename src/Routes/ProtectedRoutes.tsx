@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import AuthenticationRoute from "./AuthenticationRoute";
+// import AuthenticationRoute from "./AuthenticationRoute";
 
 const Layout = lazy(() => import("src/containers/Layout"));
 const Home = lazy(() => import("src/pages/Home"));
@@ -11,6 +11,7 @@ const Checkout = lazy(() => import("src/pages/Checkout"));
 const CitiesManagement = lazy(() => import("src/pages/CitiesManagement"));
 const RoomsManagement = lazy(() => import("src/pages/RoomsManagement"));
 const HotelsManagement = lazy(() => import("src/pages/HotelsManagement"));
+const AuthenticationRoute = lazy(() => import("./AuthenticationRoute"));
 
 const protectedRoutes: RouteObject = {
   path: "/me",
