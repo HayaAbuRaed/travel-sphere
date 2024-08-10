@@ -1,8 +1,9 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
-import Unauthorized from "src/pages/Unauthorized";
 
 const Login = lazy(() => import("src/pages/Login"));
+const NotFound = lazy(() => import("src/pages/NotFound"));
+const Unauthenticated = lazy(() => import("src/pages/Unauthenticated"));
 
 const publicRoutes: RouteObject = {
   path: "",
@@ -18,11 +19,11 @@ const publicRoutes: RouteObject = {
     },
     {
       path: "unauthenticated",
-      element: <Unauthorized />,
+      element: <Unauthenticated />,
     },
     {
       path: "*",
-      element: <h1>404 Page</h1>,
+      element: <NotFound />,
     },
   ],
 };

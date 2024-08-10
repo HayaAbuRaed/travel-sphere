@@ -3,6 +3,7 @@ import { selectUserType } from "src/features/user";
 import { useAppSelector } from "src/store/hooks";
 import { pagesAccessRights } from "../constants/pagesAccessRights";
 import { RouteConfig } from "../types";
+import AccessDenied from "src/components/AccessDenied";
 
 const routeHOC =
   <ComponentProps extends object>(config: RouteConfig) =>
@@ -23,7 +24,7 @@ const routeHOC =
 
       const hasAccess = role === userRole;
 
-      if (!hasAccess) return <h1>Access Denied</h1>;
+      if (!hasAccess) return <AccessDenied />;
 
       return <Component {...props} />;
     };

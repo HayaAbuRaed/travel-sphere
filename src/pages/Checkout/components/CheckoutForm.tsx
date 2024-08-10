@@ -13,7 +13,7 @@ export interface CheckoutFormProps {
 }
 
 const CheckoutForm: FC<CheckoutFormProps> = ({ room }) => {
-  const { formikProps } = useAddBookingForm(room);
+  const { formikProps, isBooking } = useAddBookingForm(room);
 
   const { isValid, dirty, setFieldValue, values } = formikProps;
 
@@ -94,7 +94,8 @@ const CheckoutForm: FC<CheckoutFormProps> = ({ room }) => {
           disableElevation
           startIcon={<CheckCircleOutline />}
           disabled={!isValid || !dirty}
-          loading={false}
+          loading={isBooking}
+          loadingPosition="start"
           color="success"
         >
           Confirm Booking

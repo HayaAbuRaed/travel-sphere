@@ -9,7 +9,7 @@ const phoneNumberRegex = /^[0-9+]{1,15}$/;
 const todayMonth = new Date().getMonth() + 1;
 const todayYear = new Date().getFullYear() % 100;
 
-export const validationSchema = Yub.object<CheckoutFormValues>({
+export const validationSchema = Yub.object<CheckoutFormValues>().shape({
   fullName: Yub.string().required("Full Name is required"),
   email: Yub.string().email("Invalid email").required("Email is required"),
   phoneNumber: Yub.string()

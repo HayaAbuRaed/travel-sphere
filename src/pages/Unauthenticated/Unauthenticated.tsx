@@ -5,7 +5,7 @@ import locked from "src/animations/locked.json";
 import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Unauthorized: FC = () => {
+const Unauthenticated: FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ const Unauthorized: FC = () => {
 
         <Stack gap={1}>
           <Typography fontSize={{ xs: "1.5rem", sm: "2rem" }} fontWeight={600}>
-            Unauthorized
+            Unauthenticated
           </Typography>
           <Button
             color="secondary"
@@ -32,4 +32,4 @@ const Unauthorized: FC = () => {
   );
 };
 
-export default Unauthorized;
+export default Unauthenticated;

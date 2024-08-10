@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { selectCart } from "src/features/cart/selectors";
@@ -8,6 +8,8 @@ import { BookingResponse } from "./API/types";
 import CheckoutForm from "./components/CheckoutForm";
 import PostCheckoutTable from "./components/PostCheckoutTable";
 import RoomInfo from "./components/RoomInfo";
+import Lottie from "lottie-react";
+import roomNotFound from "src/animations/roomNotFound.json";
 
 const Checkout: FC = () => {
   const cartState = useAppSelector(selectCart);
@@ -34,9 +36,14 @@ const Checkout: FC = () => {
 
   if (!room) {
     return (
-      <Grid container p={5}>
-        <Typography>Room not found</Typography>
-      </Grid>
+      <Stack
+        height="calc(100vh - 64px)"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Lottie animationData={roomNotFound} style={{ minWidth: "240px" }} />
+        <Typography variant="h6">Room not found</Typography>
+      </Stack>
     );
   }
 

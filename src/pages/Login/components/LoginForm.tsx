@@ -45,6 +45,7 @@ const LoginForm = () => {
           loadingPosition="start"
           aria-label="Login"
           className={styles.submitButton}
+          disableElevation
         >
           Log in
         </LoadingButton>

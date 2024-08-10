@@ -22,7 +22,7 @@ const Login: FC = () => {
         </Stack>
       </Stack>
 
-      <Typography variant="body2" textAlign="center" sx={{ color: "#fafafa" }}>
+      <Typography variant="body2" className={styles.copyRight}>
         © 2024 TravelSphere.
       </Typography>
     </Stack>

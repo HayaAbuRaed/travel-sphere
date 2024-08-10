@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 import NavigationDrawer from "../NavigationDrawer";
 import styles from "./style.module.css";
+import Footer from "../Footer";
 
 const Layout: FC = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -23,7 +24,7 @@ const Layout: FC = () => {
 
       <Outlet />
 
-      {/* Footer */}
+      <Footer />
     </Box>
   );
 };

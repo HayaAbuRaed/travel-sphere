@@ -62,7 +62,6 @@ const SearchResultsContextProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const onApplyFilters = () => {
-    console.log("Dispatching APPLY_FILTERS action");
     dispatch({
       type: SearchResultsActionTypes.APPLY_FILTERS,
     });
