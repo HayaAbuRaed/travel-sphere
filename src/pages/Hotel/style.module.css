@@ -27,6 +27,16 @@
   align-items: center;
 }
 
+.backdropImage {
+  max-height: calc(100% - 7em);
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.galleryImage {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 464px) {
   .carouselItem {
     padding-right: 0;
