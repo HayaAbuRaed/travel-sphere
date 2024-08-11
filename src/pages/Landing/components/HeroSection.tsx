@@ -58,7 +58,7 @@ const HeroSection: FC = () => {
       </Stack>
 
       <Stack pt={2} alignItems="center" justifyContent="center" gap={2}>
-        <Typography variant="h2" className={styles.heading}>
+        <Typography component="h1" variant="h2" className={styles.heading}>
           Welcome to TravelSphere
         </Typography>
         <Typography variant="h5" className={styles.subHeading}>
@@ -68,7 +68,7 @@ const HeroSection: FC = () => {
       </Stack>
 
       <Stack alignItems="center" pt={2}>
-        <img src={home} className={styles.heroImage} />
+        <img src={home} alt="home screenshot" className={styles.heroImage} />
       </Stack>
     </>
   );

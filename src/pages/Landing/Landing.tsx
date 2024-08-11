@@ -1,16 +1,27 @@
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { Grid } from "@mui/material";
 import { FC } from "react";
-import styles from "./style.module.css";
+import FeaturedDeals from "../Home/components/FeaturedDeals";
 import HeroSection from "./components/HeroSection";
-// import testimonial from "src/assets/testimonial-image.png";
+import styles from "./style.module.css";
+import IntroSection from "./components/IntroSection";
 
 const Landing: FC = () => {
   return (
-    <Parallax pages={4}>
-      <ParallaxLayer offset={0} speed={0.5} className={styles.heroSection}>
+    <Grid container>
+      <Grid item xs={12} className={styles.heroSection}>
         <HeroSection />
-      </ParallaxLayer>
-    </Parallax>
+      </Grid>
+
+      <IntroSection />
+
+      <Grid item xs={12} className={styles.section}>
+        <FeaturedDeals />
+      </Grid>
+
+      <Grid item xs={12} className={styles.heroSection}>
+        Section 3
+      </Grid>
+    </Grid>
   );
 };
 
