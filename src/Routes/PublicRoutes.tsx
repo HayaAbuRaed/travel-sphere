@@ -4,6 +4,7 @@ import { RouteObject } from "react-router-dom";
 const Login = lazy(() => import("src/pages/Login"));
 const NotFound = lazy(() => import("src/pages/NotFound"));
 const Unauthenticated = lazy(() => import("src/pages/Unauthenticated"));
+const Landing = lazy(() => import("src/pages/Landing"));
 
 const publicRoutes: RouteObject = {
   path: "",
@@ -11,7 +12,7 @@ const publicRoutes: RouteObject = {
     {
       path: "",
       index: true,
-      element: <h1>Landing Page</h1>,
+      element: <Landing />,
     },
     {
       path: "/login",
