@@ -1,7 +1,6 @@
 .heroSection {
   overflow: hidden;
   height: 100vh;
-  /* position: relative; */
 }
 
 .videoBackgroundContainer {
@@ -21,7 +20,7 @@
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   z-index: 0;
   width: 100%;
   height: 100%;
@@ -89,4 +88,36 @@
 .section {
   min-height: 100vh;
   align-items: center;
+  padding-block: 2.5rem;
+}
+
+.highlight {
+  font-weight: 600;
+  color: orange;
+  display: inline-block;
+}
+
+.questionSection,
+.motivationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #fafafa;
+  padding: 2rem;
+  position: relative;
+  background: url("../../assets/nature.jpg") no-repeat bottom / cover fixed;
+}
+
+.motivationSection {
+  background: url("../../assets/river.jpg") no-repeat bottom / cover fixed;
+}
+
+.questionSection .overlay,
+.motivationSection .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.aboveOverlay {
+  z-index: 1;
 }

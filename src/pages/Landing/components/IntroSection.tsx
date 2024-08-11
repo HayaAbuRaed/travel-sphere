@@ -1,4 +1,4 @@
-import { Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import introImage from "src/assets/intro.png";
 import styles from "../style.module.css";
@@ -26,8 +26,8 @@ const IntroSection: FC = () => {
         maxWidth={{ xs: 700 }}
       >
         <Typography variant="h3">
-          The <b style={{ color: "orange" }}>Best</b> and{" "}
-          <b style={{ color: "orange" }}>Most Trusted</b> Service
+          The <Box className={styles.highlight}>Best</Box> and&nbsp;
+          <Box className={styles.highlight}>Most Trusted</Box> Service
         </Typography>
         <Typography>
           At TS platform, we ensure our customers receive excellent
