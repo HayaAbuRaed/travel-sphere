@@ -7,9 +7,9 @@ import useGetRecentlyVisitedHotels from "../hook/useGetRecentlyVisitedHotels";
 import styles from "../style.module.css";
 import { formatDisplayDate, mapRecentlyVisitedHotelToHotel } from "../utils";
 import "./carousel.css";
-import CarouselSkeleton from "./CarouselSkeleton";
 import SectionTitle from "./SectionTitle";
 import { useNavigate } from "react-router-dom";
+import CarouselSkeleton from "src/components/CarouselSkeleton";
 
 const RecentlyVisited: FC = () => {
   const { recentHotels, isFetching } = useGetRecentlyVisitedHotels();
@@ -30,9 +30,11 @@ const RecentlyVisited: FC = () => {
     >
       <SectionTitle title="recently visited hotels" />
 
-      {isFetching && <CarouselSkeleton />}
+      {isFetching && (
+        <CarouselSkeleton carouselProps={recentlyVisitedCarouselProps} />
+      )}
 
-      {recentHotels && (
+      {recentHotels && !isFetching && (
         <Carousel {...recentlyVisitedCarouselProps}>
           {recentHotels.map((hotel) => (
             <Grid

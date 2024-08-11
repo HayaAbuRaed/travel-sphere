@@ -1,11 +1,11 @@
 import { Skeleton } from "@mui/material";
 import { FC } from "react";
-import Carousel from "react-multi-carousel";
-import { recentlyVisitedCarouselProps } from "../constants";
+import Carousel, { CarouselProps as MCP } from "react-multi-carousel";
+import { CarouselProps } from "./types";
 
-const CarouselSkeleton: FC = () => {
+const CarouselSkeleton: FC<CarouselProps> = ({ carouselProps }) => {
   return (
-    <Carousel {...recentlyVisitedCarouselProps}>
+    <Carousel {...(carouselProps as MCP)}>
       {Array.from({ length: 4 }).map((_, index) => (
         <Skeleton
           key={index}

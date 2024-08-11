@@ -1,0 +1,31 @@
+.container {
+  padding-bottom: 2rem;
+  column-gap: 0.75rem;
+  position: relative;
+}
+
+.overViewContainer {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel {
+  width: 100%;
+  gap: 1rem;
+}
+
+.carouselItem {
+  padding-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+@media screen and (max-width: 464px) {
+  .carouselItem {
+    padding-right: 0;
+  }
+}
