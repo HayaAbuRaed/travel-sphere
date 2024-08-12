@@ -55,7 +55,7 @@
   /* font-size: 1.2rem; */
   /* font-weight: 600; */
   color: #212121;
-  max-width: 530px;
+  max-width: 650px;
 }
 
 .heading,
@@ -86,8 +86,6 @@
 }
 
 .section {
-  height: 100vh;
-  max-height: 800px;
   align-items: center;
   padding-block: 2.5rem 3rem;
 }
@@ -107,6 +105,9 @@
   color: #fafafa;
   padding: 2rem;
   position: relative;
+}
+
+.questionSection {
   background: url("../../assets/nature.jpg") no-repeat bottom / cover fixed;
 }
 

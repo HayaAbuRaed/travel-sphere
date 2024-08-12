@@ -52,6 +52,7 @@ const Landing: FC = () => {
         xs={12}
         className={styles.section}
         justifyContent="center"
+        minHeight="100vh"
       >
         <GallerySection />
       </Grid>

@@ -71,7 +71,7 @@ const Navbar: FC<NavbarProps> = ({ handleOpenSideBar }) => {
             ml="auto"
             flexDirection="row"
             alignItems="center"
-            gap={{ xs: 0.2, sm: 1.5 }}
+            gap={{ xs: 0.2, sm: 1 }}
           >
             {!isAdmin && (
               <IconButton

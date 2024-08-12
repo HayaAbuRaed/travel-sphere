@@ -9,12 +9,13 @@ const IntroSection: FC = () => {
     <Grid
       item
       xs={12}
-      container
       p={5}
-      columnGap={4}
+      container
       rowGap={3}
-      justifyContent="center"
+      columnGap={4}
       bgcolor="#f1f1f1"
+      justifyContent="center"
+      minHeight={{ lg: "100vh" }}
     >
       <Stack
         component={Grid}
