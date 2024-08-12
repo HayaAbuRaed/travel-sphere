@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import home from "src/assets/home2.png";
+import home from "src/assets/home.png";
 import icon from "src/assets/icon2.png";
 import sky from "src/assets/videos/sky.mp4";
 import styles from "../style.module.css";
