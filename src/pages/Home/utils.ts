@@ -1,15 +1,5 @@
 import { Hotel } from "src/components/HotelCard/types";
-import { FeaturedDealResponse, RecentlyVisitedResponse } from "./API/types";
-
-export const mapDealToHotel = (deal: FeaturedDealResponse): Hotel => {
-  const { roomPhotoUrl, hotelStarRating, ...rest } = deal;
-
-  return {
-    ...rest,
-    photoUrl: roomPhotoUrl,
-    starRating: hotelStarRating,
-  };
-};
+import { RecentlyVisitedResponse } from "./API/types";
 
 export const mapRecentlyVisitedHotelToHotel = (
   recentHotel: RecentlyVisitedResponse

@@ -1,9 +1,9 @@
 .footer {
   background-color: #f1f1f1;
   padding-block: 2rem;
-  flex-direction: row;
   justify-content: space-between;
   gap: 3rem;
+  width: 100vw;
 }
 
 .contact {

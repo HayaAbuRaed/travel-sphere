@@ -22,7 +22,6 @@
     rgba(0, 0, 0, 0.8856792717086834) 100%
   );
   color: #f5f5f5;
-  /* padding-top: 6em; */
 }
 
 .overlay h1 {
@@ -30,13 +29,6 @@
   font-size: 2.5rem;
   text-align: center;
   padding-top: 50px;
-}
-
-.overViewContainer {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .sectionContainer {

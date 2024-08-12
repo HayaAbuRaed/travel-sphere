@@ -1,16 +1,5 @@
 import axios from "API/axios";
-import {
-  FeaturedDealResponse,
-  RecentlyVisitedResponse,
-  TrendingDestinationsResponse,
-} from "./types";
-
-export const getFeaturedDeals = async () => {
-  const response = await axios.get<FeaturedDealResponse[]>(
-    "/home/featured-deals"
-  );
-  return response.data;
-};
+import { RecentlyVisitedResponse, TrendingDestinationsResponse } from "./types";
 
 export const getRecentlyVisited = async (userId: string) => {
   const response = await axios.get<RecentlyVisitedResponse[]>(

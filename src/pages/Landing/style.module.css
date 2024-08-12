@@ -1,0 +1,160 @@
+.heroSection {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.videoBackgroundContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(242, 240, 240, 0.3);
+}
+
+.logo {
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.07rem;
+  color: #fafafa;
+}
+
+.button {
+  border-radius: 10rem;
+  text-transform: none;
+  font-weight: 700;
+  border-width: 2px;
+  height: 2.4em;
+  min-width: 8em;
+}
+
+.heading {
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: #fafafa;
+}
+
+.subHeading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #212121;
+  max-width: 628px;
+}
+
+.heading,
+.subHeading {
+  text-align: center;
+}
+
+.heroImage,
+.introImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 500px;
+}
+
+.heroImage {
+  max-width: 1350px;
+}
+
+.statisticValue {
+  color: #fafafa;
+  width: 3.8em;
+  height: 3.8em;
+  font-weight: 500;
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  height: 100vh;
+  max-height: 800px;
+  align-items: center;
+  padding-block: 2.5rem 3rem;
+}
+
+.highlight {
+  font-weight: 600;
+  color: orange;
+  display: inline-block;
+}
+
+.questionSection,
+.motivationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #fafafa;
+  padding: 2rem;
+  position: relative;
+  background: url("../../assets/nature.jpg") no-repeat bottom / cover fixed;
+}
+
+.motivationSection {
+  background: url("../../assets/river.jpg") no-repeat bottom / cover fixed;
+}
+
+.questionSection .overlay,
+.motivationSection .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.aboveOverlay {
+  z-index: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subHeading {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .heading {
+    font-size: 1.3rem;
+  }
+
+  .subHeading {
+    font-size: 0.75rem;
+  }
+
+  .button {
+    min-width: 0;
+    font-size: 0.75rem;
+  }
+
+  .appTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .appTitle {
+    display: none;
+  }
+}
