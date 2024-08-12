@@ -1,10 +1,20 @@
 import { Avatar, Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import home from "src/assets/home.png";
 import icon from "src/assets/icon2.png";
 import sky from "src/assets/videos/sky.mp4";
 import styles from "../style.module.css";
-import { useNavigate } from "react-router-dom";
+
+const ButtonStyling = {
+  borderRadius: "10rem",
+  textTransform: "none",
+  fontWeight: 700,
+  borderWidth: 2,
+  height: "2.4em",
+  minWidth: { sm: "8em" },
+  fontSize: { sm: "0.75rem", md: "0.9rem" },
+};
 
 const HeroSection: FC = () => {
   const navigate = useNavigate();
@@ -16,7 +26,7 @@ const HeroSection: FC = () => {
       item
       xs={12}
       className={styles.heroSection}
-      maxHeight={{ xs: 390, sm: 510, md: 660, lg: "100vh" }}
+      maxHeight={{ xs: 390, sm: 510, md: 718, lg: "100vh" }}
     >
       {/* Background */}
       <Stack className={styles.videoBackgroundContainer}>
@@ -31,7 +41,7 @@ const HeroSection: FC = () => {
         py={{ xs: 3, sm: 2 }}
         px={{ xs: 2, sm: 5 }}
       >
-        <Typography variant="h6" className={styles.logo}>
+        <Typography variant="h6" className={styles.logo} fontWeight={700}>
           <Avatar
             src={icon}
             alt="TravelSphere"
@@ -45,7 +55,7 @@ const HeroSection: FC = () => {
             variant="outlined"
             color="primary"
             disableElevation
-            className={styles.button}
+            sx={ButtonStyling}
           >
             Register
           </Button>
@@ -53,7 +63,7 @@ const HeroSection: FC = () => {
             variant="contained"
             color="primary"
             disableElevation
-            className={styles.button}
+            sx={ButtonStyling}
             onClick={handleLoginClick}
           >
             Log in
@@ -68,10 +78,21 @@ const HeroSection: FC = () => {
         justifyContent="center"
         px={{ xs: 2, sm: 5 }}
       >
-        <Typography component="h1" variant="h2" className={styles.heading}>
+        <Typography
+          component="h1"
+          variant="h2"
+          className={styles.heading}
+          fontWeight={700}
+          sx={{ fontSize: { xs: "1.5rem", sm: "2rem", md: "3.2rem" } }}
+        >
           Welcome to TravelSphere
         </Typography>
-        <Typography variant="h5" className={styles.subHeading}>
+        <Typography
+          variant="h5"
+          fontWeight={600}
+          className={styles.subHeading}
+          sx={{ fontSize: { xs: "0.75rem", sm: "1rem", md: "1.2rem" } }}
+        >
           Book, organize and control your business travel, all in one place. For
           faster admin, better decision-making and smarter spending.
         </Typography>

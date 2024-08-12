@@ -1,17 +1,24 @@
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
-import { FC } from "react";
+import { FC, useState } from "react";
 import icon from "src/assets/icon2.png";
 import plane from "src/assets/plane.png";
 import styles from "./style.module.css";
 
 const SplashScreen: FC = () => {
+  const [timeOut, setTimeOut] = useState(false);
+
+  setTimeout(() => {
+    setTimeOut(true);
+  }, 6500);
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 6 }}
       className={styles.splashScreen}
+      style={{ display: timeOut ? "none" : "block" }}
     >
       {/* logo */}
       <Box className={styles.absoluteTopLeft} width="100%" height="100%">

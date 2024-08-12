@@ -55,7 +55,11 @@ const IntroSection: FC = () => {
               >
                 {value}
               </Typography>
-              <Typography variant="subtitle1" fontWeight={500}>
+              <Typography
+                variant="subtitle1"
+                textAlign="center"
+                fontWeight={500}
+              >
                 {title}
               </Typography>
             </Stack>

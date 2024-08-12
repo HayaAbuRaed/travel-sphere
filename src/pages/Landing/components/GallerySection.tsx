@@ -15,7 +15,7 @@ const GallerySection: FC = () => {
 
   return (
     <Stack gap={3} alignItems="center">
-      <Typography variant="h5" textAlign="center">
+      <Typography component="div" variant="h5" textAlign="center">
         Visit our&nbsp;
         <Typography variant="h4" className={styles.highlight}>
           Customers Tour Gallery
