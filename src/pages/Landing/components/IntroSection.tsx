@@ -11,15 +11,17 @@ const IntroSection: FC = () => {
       xs={12}
       container
       p={5}
-      height="100vh"
       columnGap={4}
+      rowGap={3}
+      // minHeight={{ lg: "100vh" }}
       justifyContent="center"
       bgcolor="#f1f1f1"
     >
       <Stack
         component={Grid}
         item
-        xs
+        xs={12}
+        md
         justifyContent="center"
         alignItems="center"
         gap={5}
@@ -62,7 +64,14 @@ const IntroSection: FC = () => {
         </Grid>
       </Stack>
 
-      <Grid item container xs={5} alignItems="center">
+      <Grid
+        item
+        container
+        xs={12}
+        md={5}
+        alignItems="center"
+        justifyContent="center"
+      >
         <img src={introImage} className={styles.introImage} />
       </Grid>
     </Grid>

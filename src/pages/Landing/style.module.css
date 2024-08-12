@@ -56,6 +56,12 @@
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   color: #212121;
+  max-width: 628px;
+}
+
+.heading,
+.subHeading {
+  text-align: center;
 }
 
 .heroImage,
@@ -63,6 +69,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  max-width: 500px;
 }
 
 .heroImage {
@@ -79,16 +86,11 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 375px) {
-  .button {
-    min-width: 0;
-  }
-}
-
 .section {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 800px;
   align-items: center;
-  padding-block: 2.5rem;
+  padding-block: 2.5rem 3rem;
 }
 
 .highlight {
@@ -120,4 +122,39 @@
 
 .aboveOverlay {
   z-index: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subHeading {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .heading {
+    font-size: 1.3rem;
+  }
+
+  .subHeading {
+    font-size: 0.75rem;
+  }
+
+  .button {
+    min-width: 0;
+    font-size: 0.75rem;
+  }
+
+  .appTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .appTitle {
+    display: none;
+  }
 }
