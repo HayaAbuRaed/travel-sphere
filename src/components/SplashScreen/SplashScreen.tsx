@@ -7,12 +7,11 @@ import styles from "./style.module.css";
 
 const SplashScreen: FC = () => {
   return (
-    <Box
-      position="relative"
-      width="100vw"
-      height="100vh"
-      overflow="hidden"
-      bgcolor="#f5f5f5"
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      transition={{ duration: 0.5, delay: 6 }}
+      className={styles.splashScreen}
     >
       {/* logo */}
       <Box className={styles.absoluteTopLeft} width="100%" height="100%">
@@ -97,7 +96,7 @@ const SplashScreen: FC = () => {
           <img src={plane} alt="logo image" className={styles.planeImage} />
         </motion.div>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 

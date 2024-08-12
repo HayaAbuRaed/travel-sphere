@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import FeaturedDeals from "src/components/FeaturedDeals";
+import SplashScreen from "src/components/SplashScreen";
 import Footer from "src/containers/Footer";
 import HeroSection from "./components/HeroSection";
 import IntroSection from "./components/IntroSection";
@@ -20,7 +21,9 @@ const Landing: FC = () => {
   const xsScreen = useMediaQuery("(max-width:600px)");
 
   return (
-    <Grid container>
+    <Grid container sx={{ position: "relative", overflowX: "hidden" }}>
+      <SplashScreen />
+
       <Grid item xs={12} className={styles.heroSection}>
         <HeroSection />
       </Grid>
