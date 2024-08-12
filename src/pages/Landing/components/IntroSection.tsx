@@ -13,7 +13,6 @@ const IntroSection: FC = () => {
       p={5}
       columnGap={4}
       rowGap={3}
-      // minHeight={{ lg: "100vh" }}
       justifyContent="center"
       bgcolor="#f1f1f1"
     >

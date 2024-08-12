@@ -1,35 +1,16 @@
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PhoneNumberIcon from "@mui/icons-material/Phone";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import icon from "src/assets/icon.png";
+import { contactList } from "./constants";
 import styles from "./style.module.css";
-
-export const contactList = [
-  {
-    name: "github",
-    icon: GitHubIcon,
-    link: "https://github.com/HayaAbuRaed",
-    label: "HayaAbuRaed",
-  },
-  {
-    name: "email",
-    icon: EmailIcon,
-    link: "mailto:hayaa.aburaed@gmail.com",
-    label: "hayaa.aburaed@gmail.com",
-  },
-  {
-    name: "phoneNumber",
-    icon: PhoneNumberIcon,
-    link: "tel:+970599435933",
-    label: "+970599435933",
-  },
-];
 
 const Footer: FC = () => {
   return (
-    <Stack className={styles.footer} px={{ xs: 2, sm: 5, lg: 14 }}>
+    <Stack
+      px={{ xs: 2, sm: 5, lg: 14 }}
+      flexDirection="row"
+      className={styles.footer}
+    >
       <Stack gap={1} justifyContent="center" maxWidth={400}>
         <Stack
           gap={0.75}
@@ -68,7 +49,7 @@ const Footer: FC = () => {
                 color="text.primary"
                 className={styles.contact}
               >
-                <contact.icon fontSize="small" sx={{ color: "#ffc400" }} />
+                <contact.Icon fontSize="small" sx={{ color: "#ffc400" }} />
                 <Box display={{ xs: "none", sm: "inline-block" }}>
                   {contact.label}
                 </Box>
