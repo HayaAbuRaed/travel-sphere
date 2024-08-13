@@ -15,6 +15,7 @@ const useSearchForm = () => {
   const { dateRange } = formValues;
 
   const onSubmit = async (values: FormikSearchPayload) => {
+    console.log("Date", Date());
     dispatch(
       submitSearch({
         formValues: {
