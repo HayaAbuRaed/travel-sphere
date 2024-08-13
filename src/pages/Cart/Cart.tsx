@@ -26,7 +26,7 @@ const Cart: FC = () => {
   }
 
   return (
-    <Grid container justifyContent="center" p={5} pt={4} pr={3} rowGap={1.25}>
+    <Grid container justifyContent="center" p={5} pt={2} pr={3} rowGap={1.25}>
       <Grid item xs={12}>
         <Typography variant="h6" gutterBottom textAlign="center">
           Choose a room to checkout

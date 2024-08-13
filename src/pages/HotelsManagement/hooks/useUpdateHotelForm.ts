@@ -4,7 +4,7 @@ import useUpdateHotelAPI from "./useUpdateHotelAPI";
 import { UpdateHotelRequest } from "../API/types";
 
 const useUpdateHotelForm = (hotel: HotelData) => {
-  const { updateHotel, isPending } = useUpdateHotelAPI();
+  const { updateHotel, isPending, status } = useUpdateHotelAPI();
 
   const handleSubmit = (values: UpdateHotelRequest) => {
     updateHotel(values);
@@ -23,7 +23,7 @@ const useUpdateHotelForm = (hotel: HotelData) => {
     onSubmit: handleSubmit,
   });
 
-  return { formikProps, isUpdating: isPending };
+  return { formikProps, isUpdating: isPending, updateStatus: status };
 };
 
 export default useUpdateHotelForm;

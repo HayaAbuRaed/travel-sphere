@@ -4,6 +4,8 @@
   justify-content: space-between;
   gap: 3rem;
   width: 100%;
+  position: relative;
+  bottom: 0;
 }
 
 .contact {

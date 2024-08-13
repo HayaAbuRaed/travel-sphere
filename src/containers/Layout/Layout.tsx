@@ -1,10 +1,10 @@
-import { Box } from "@mui/material";
+import { Stack } from "@mui/material";
 import { FC, useState } from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 import NavigationDrawer from "../NavigationDrawer";
 import styles from "./style.module.css";
-import Footer from "../Footer";
 
 const Layout: FC = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -14,7 +14,7 @@ const Layout: FC = () => {
   const handleCloseSideBar = () => setOpenSideBar(false);
 
   return (
-    <Box className={styles.layoutContainer}>
+    <Stack className={styles.layoutContainer}>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
 
       <NavigationDrawer
@@ -25,7 +25,7 @@ const Layout: FC = () => {
       <Outlet />
 
       <Footer />
-    </Box>
+    </Stack>
   );
 };
 

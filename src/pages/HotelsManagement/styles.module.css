@@ -2,8 +2,9 @@
 .dialogContent {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .dialogContent {
-  gap: 1rem;
+  gap: 1.5rem;
 }

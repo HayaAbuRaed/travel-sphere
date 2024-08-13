@@ -86,7 +86,10 @@ const HotelsManagement: FC = () => {
     });
   };
 
-  const handleCloseDialog = () => setOpenDialog(null);
+  const handleCloseDialog = () => {
+    setOpenDialog(null);
+    setSelectedHotel(null);
+  };
 
   return (
     <>
