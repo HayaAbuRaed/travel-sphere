@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import icon from "src/assets/icon.png";
+import icon from "src/assets/images/icon.png";
 import { selectCartTotalItems } from "src/features/cart/selectors";
 import { selectIsUserAdmin } from "src/features/user";
 import { useAppSelector } from "src/store/hooks";
@@ -71,7 +71,7 @@ const Navbar: FC<NavbarProps> = ({ handleOpenSideBar }) => {
             ml="auto"
             flexDirection="row"
             alignItems="center"
-            gap={{ xs: 0.2, sm: 1.5 }}
+            gap={{ xs: 0.2, sm: 1 }}
           >
             {!isAdmin && (
               <IconButton

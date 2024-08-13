@@ -1,4 +1,14 @@
-import { Button, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { FC } from "react";
 import { formatDisplayDate } from "src/utils/search";
 import styles from "../style.module.css";
@@ -17,58 +27,51 @@ const PostCheckoutTable: FC<PostCheckoutTableProps> = ({ details }) => {
     bookingDateTime,
   } = details;
 
+  const rows = [
+    { label: "Customer Name", value: customerName },
+    { label: "Hotel Name", value: hotelName },
+    { label: "Room Type", value: roomType },
+    { label: "Room Number", value: roomNumber },
+    { label: "Total Cost", value: totalCost },
+    { label: "Booking Status", value: bookingStatus },
+    {
+      label: "Booking Date",
+      value: formatDisplayDate(new Date(bookingDateTime)),
+    },
+    { label: "Payment Method", value: paymentMethod },
+    { label: "Confirmation Number", value: confirmationNumber },
+  ];
+
   return (
     <Stack
-      py={5}
+      py={3}
       px={{ xs: 2, sm: 5 }}
-      gap={1}
+      gap={3}
+      bgcolor="#f5f5f5"
       alignItems="center"
       className={styles.container}
     >
-      <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5" fontWeight={600}>
         Confirmation Details
       </Typography>
 
-      <table className={styles.table}>
-        <tbody>
-          <tr>
-            <th>Customer Name</th>
-            <td>{customerName}</td>
-          </tr>
-          <tr>
-            <th>Hotel Name</th>
-            <td>{hotelName}</td>
-          </tr>
-          <tr>
-            <th>Room Type</th>
-            <td>{roomType}</td>
-          </tr>
-          <tr>
-            <th>Room Number</th>
-            <td>{roomNumber}</td>
-          </tr>
-          <tr>
-            <th>Total Cost</th>
-            <td>{totalCost}</td>
-          </tr>
-          <tr>
-            <th>Booking Status</th>
-            <td>{bookingStatus}</td>
-          </tr>
-          <tr>
-            <th>Booking Date</th>
-            <td>{formatDisplayDate(new Date(bookingDateTime))}</td>
-          </tr>
-          <tr>
-            <th>Payment Method</th>
-            <td>{paymentMethod}</td>
-          </tr>
-          <tr>
-            <th>Confirmation Number</th>
-            <td>{confirmationNumber}</td>
-          </tr>
-        </tbody>
-      </table>
+      <TableContainer component={Paper} sx={{ maxWidth: 600, boxShadow: 3 }}>
+        <Table>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.label}>
+                <TableCell
+                  component="th"
+                  sx={{ fontWeight: "bold", borderRight: "1px solid #ccc" }}
+                >
+                  {row.label}
+                </TableCell>
+                <TableCell sx={{ width: "50%" }}>{row.value}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <Button
         variant="contained"

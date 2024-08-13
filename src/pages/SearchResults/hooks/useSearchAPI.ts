@@ -23,7 +23,7 @@ const useSearchAPI = () => {
     error,
   } = useQuery({
     queryFn: () => {
-      dispatch(resetSearchSubmitted());
+      setTimeout(() => dispatch(resetSearchSubmitted()), 1000);
       return searchApi({
         ...otherFormValues,
         checkInDate: startDate,

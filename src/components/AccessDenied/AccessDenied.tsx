@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import { FC } from "react";
-import accessDenied from "src/animations/accessDenied.json";
+import accessDenied from "src/assets/animations/accessDenied.json";
 
 const AccessDenied: FC = () => {
   return (

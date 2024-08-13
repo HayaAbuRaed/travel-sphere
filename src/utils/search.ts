@@ -7,7 +7,7 @@ import { DateRange } from "src/types/search";
  * @returns string - date string in the format of YYYY-MM-DD
  */
 export const formatDate = (date: Date): string =>
-  date.toISOString().split("T")[0];
+  date.toLocaleDateString("en-CA");
 
 /**
    *
@@ -27,8 +27,8 @@ export const formatDisplayDate = (date: Date) => {
 export const serializeDateRange = (dateRange: DateRange) => {
   const { startDate, endDate } = dateRange;
   return {
-    startDate: formatDate(startDate),
-    endDate: formatDate(endDate),
+    startDate: startDate.toLocaleString(),
+    endDate: endDate.toLocaleString(),
   };
 };
 

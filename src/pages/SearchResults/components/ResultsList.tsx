@@ -3,6 +3,8 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import AmenityChip from "src/components/AmenityChip";
 import HotelCard from "src/components/HotelCard";
+import { selectSearchQueries } from "src/features/searchQueries";
+import { useAppSelector } from "src/store/hooks";
 import useSearchResultsContext from "../context/useSearchResultsContext";
 import { mapSearchResultToHotel } from "../utils";
 import EmptySearch from "./EmptySearch";
@@ -14,9 +16,11 @@ const ResultsList: FC = () => {
 
   const navigate = useNavigate();
 
+  const { searchSubmitted } = useAppSelector(selectSearchQueries);
+
   const sm = useMediaQuery("(min-width: 900px)");
 
-  if (loading)
+  if (loading && searchSubmitted) {
     return (
       <Stack gap={1}>
         {[...Array(5)].map((_, index) => (
@@ -29,6 +33,7 @@ const ResultsList: FC = () => {
         ))}
       </Stack>
     );
+  }
 
   if (!searchResults || searchResults.length === 0) return <EmptySearch />;
 

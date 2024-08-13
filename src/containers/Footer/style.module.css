@@ -3,7 +3,7 @@
   padding-block: 2rem;
   justify-content: space-between;
   gap: 3rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .contact {
@@ -20,5 +20,4 @@
     gap: 1.5rem;
     padding-inline: 2rem;
   }
-    
 }

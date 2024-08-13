@@ -4,7 +4,7 @@ import { FC } from "react";
 import RoomCard from "src/components/RoomCard";
 import { selectCart } from "src/features/cart/selectors";
 import { useAppSelector } from "src/store/hooks";
-import emptyCart from "src/animations/emptyCart.json";
+import emptyCart from "src/assets/animations/emptyCart.json";
 
 const Cart: FC = () => {
   const { items } = useAppSelector(selectCart);

@@ -1,6 +1,6 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import introImage from "src/assets/intro.png";
+import introImage from "src/assets/images/intro.png";
 import styles from "../style.module.css";
 import { STATISTICS } from "../constants";
 
@@ -9,12 +9,13 @@ const IntroSection: FC = () => {
     <Grid
       item
       xs={12}
-      container
       p={5}
-      columnGap={4}
+      container
       rowGap={3}
-      justifyContent="center"
+      columnGap={4}
       bgcolor="#f1f1f1"
+      justifyContent="center"
+      minHeight={{ lg: "100vh" }}
     >
       <Stack
         component={Grid}

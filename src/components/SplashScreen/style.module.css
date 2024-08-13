@@ -1,9 +1,9 @@
 .splashScreen {
-  position: absolute;
+  position: fixed;
   top: 0;
   overflow: hidden;
   background-color: #f5f5f5;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .fullScreen,

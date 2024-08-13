@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import { FC } from "react";
-import locked from "src/animations/locked.json";
+import locked from "src/assets/animations/locked.json";
 import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 

@@ -1,8 +1,6 @@
 import { addDays } from "date-fns";
 import { FormikSearchPayload } from "src/types/search";
 
-export const SEARCH_QUERY_KEY = "search";
-
 export const INITIAL_VALUES: FormikSearchPayload = {
   dateRange: {
     startDate: new Date(),

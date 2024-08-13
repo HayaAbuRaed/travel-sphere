@@ -22,14 +22,12 @@ const useAddHotelAPI = () => {
     onSuccess: (hotel: HotelData) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       queryClient.setQueryData([HOTELS_QUERY_KEY], (oldData: any) => {
-        console.log("old data", oldData);
         if (!oldData || !oldData.pages) return oldData;
 
         const updatedPages = oldData.pages.map((page: HotelData[]) => [
           hotel,
           ...page,
         ]);
-        console.log("new data", updatedPages);
 
         return { ...oldData, pages: updatedPages };
       });
