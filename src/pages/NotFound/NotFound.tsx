@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Lottie from "lottie-react";
 import { FC } from "react";
-import notFound404 from "src/animations/notFound404.json";
+import notFound404 from "src/assets/animations/notFound404.json";
 
 const NotFound: FC = () => {
   return (

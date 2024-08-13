@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import home from "src/assets/home.png";
-import icon from "src/assets/icon2.png";
-import sky from "src/assets/videos/sky.mp4";
+import home from "src/assets/images/home.png";
+import icon from "src/assets/images/icon2.png";
+import sky from "src/assets/images/videos/sky.mp4";
 import styles from "../style.module.css";
 
 const ButtonStyling = {

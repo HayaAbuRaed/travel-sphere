@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import { FC } from "react";
-import empty from "src/animations/empty.json";
+import empty from "src/assets/animations/empty.json";
 
 const EmptySearch: FC = () => {
   return (

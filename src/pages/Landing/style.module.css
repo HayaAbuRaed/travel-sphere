@@ -108,11 +108,13 @@
 }
 
 .questionSection {
-  background: url("../../assets/nature.jpg") no-repeat bottom / cover fixed;
+  background: url("../../assets/images/nature.jpg") no-repeat bottom / cover
+    fixed;
 }
 
 .motivationSection {
-  background: url("../../assets/river.jpg") no-repeat bottom / cover fixed;
+  background: url("../../assets/images/river.jpg") no-repeat bottom / cover
+    fixed;
 }
 
 .questionSection .overlay,

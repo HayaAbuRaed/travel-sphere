@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FC } from "react";
-import icon from "src/assets/icon.png";
+import icon from "src/assets/images/icon.png";
 import { ADMIN_NAV_ITEMS, DRAWER_WIDTH, USER_NAV_ITEMS } from "./constants";
 import { NavigationDrawerProps } from "./types";
 import { useAppSelector } from "src/store/hooks";

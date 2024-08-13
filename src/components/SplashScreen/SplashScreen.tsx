@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { FC, useState } from "react";
-import icon from "src/assets/icon2.png";
-import plane from "src/assets/plane.png";
+import icon from "src/assets/images/icon2.png";
+import plane from "src/assets/images/plane.png";
 import styles from "./style.module.css";
 
 const SplashScreen: FC = () => {

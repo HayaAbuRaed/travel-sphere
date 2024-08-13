@@ -1,6 +1,6 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import icon from "src/assets/icon.png";
+import icon from "src/assets/images/icon.png";
 import { contactList } from "./constants";
 import styles from "./style.module.css";
 

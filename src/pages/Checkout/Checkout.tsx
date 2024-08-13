@@ -9,7 +9,7 @@ import CheckoutForm from "./components/CheckoutForm";
 import PostCheckoutTable from "./components/PostCheckoutTable";
 import RoomInfo from "./components/RoomInfo";
 import Lottie from "lottie-react";
-import roomNotFound from "src/animations/roomNotFound.json";
+import roomNotFound from "src/assets/animations/roomNotFound.json";
 
 const Checkout: FC = () => {
   const cartState = useAppSelector(selectCart);

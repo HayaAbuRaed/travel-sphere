@@ -3,7 +3,7 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import SearchBar from "src/components/SearchBar";
 import styles from "../style.module.css";
-import homeCover from "src/assets/homeCover.jpg";
+import homeCover from "src/assets/images/homeCover.jpg";
 
 const HeroSection: FC = () => {
   return (

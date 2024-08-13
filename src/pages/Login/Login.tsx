@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import logo from "src/assets/logo.png";
+import logo from "src/assets/images/logo.png";
 import LoginForm from "./components/LoginForm";
 import useCheckAuthStatus from "./hooks/useCheckAuthStatus";
 import styles from "./style.module.css";

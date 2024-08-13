@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import icon from "src/assets/icon.png";
+import icon from "src/assets/images/icon.png";
 import { selectCartTotalItems } from "src/features/cart/selectors";
 import { selectIsUserAdmin } from "src/features/user";
 import { useAppSelector } from "src/store/hooks";

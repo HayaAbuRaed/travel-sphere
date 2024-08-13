@@ -1,6 +1,6 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import introImage from "src/assets/intro.png";
+import introImage from "src/assets/images/intro.png";
 import styles from "../style.module.css";
 import { STATISTICS } from "../constants";
 
