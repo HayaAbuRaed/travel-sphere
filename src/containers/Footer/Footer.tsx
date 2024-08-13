@@ -10,6 +10,7 @@ const Footer: FC = () => {
       px={{ xs: 2, sm: 5, lg: 14 }}
       flexDirection="row"
       className={styles.footer}
+      mt={"auto"}
     >
       <Stack gap={1} justifyContent="center" maxWidth={400}>
         <Stack

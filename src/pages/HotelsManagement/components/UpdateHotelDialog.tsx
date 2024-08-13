@@ -25,7 +25,7 @@ const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
   open,
   onClose,
 }) => {
-  const { formikProps, isUpdating } = useUpdateHotelForm(hotel);
+  const { formikProps, isUpdating, updateStatus } = useUpdateHotelForm(hotel);
 
   const { dirty, isValid, resetForm, values, setValues } = formikProps;
 
@@ -37,7 +37,7 @@ const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
   };
 
   useEffect(() => {
-    if (!isUpdating) {
+    if (!isUpdating && updateStatus === "success") {
       resetForm();
       onClose();
     }
@@ -68,6 +68,7 @@ const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
               name="description"
               label="Description"
               placeholder="e.g., Red Rose is a 5-star hotel"
+              multiline
             />
 
             <TextField
@@ -109,7 +110,7 @@ const UpdateHotelDialog: FC<UpdateHotelDialogProps> = ({
             <Map position={[latitude, longitude]} />
           </DialogContent>
 
-          <DialogActions sx={{ pr: 3, mt: "auto" }}>
+          <DialogActions sx={{ pr: 3, py: 1, mt: "auto" }}>
             <LoadingButton
               type="submit"
               loading={isUpdating}
