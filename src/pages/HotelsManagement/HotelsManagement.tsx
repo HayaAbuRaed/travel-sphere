@@ -88,9 +88,6 @@ const HotelsManagement: FC = () => {
 
   const handleCloseDialog = () => setOpenDialog(null);
 
-  console.log("selectedHotel", selectedHotel);
-  console.log("openDialog", openDialog);
-
   return (
     <>
       <Grid container px={{ xs: 3.5, md: 7 }} py={4} rowGap={3}>
