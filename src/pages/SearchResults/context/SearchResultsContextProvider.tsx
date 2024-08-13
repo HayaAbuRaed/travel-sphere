@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, useEffect, useReducer } from "react";
-import useSearchAPI from "src/components/SearchBar/hooks/useSearchAPI";
+import useSearchAPI from "src/pages/SearchResults/hooks/useSearchAPI";
 import { SORTING_OPTIONS } from "../constants";
 import SearchResultsContext, { initialState } from "./SearchResultsContext";
 import searchResultsReducer from "./searchResultsReducer";
