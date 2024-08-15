@@ -4,7 +4,7 @@ import { ACCESS_TOKEN_KEY } from "src/constants/localStorage";
 import { showErrorSnackbar } from "src/features/snackbar/snackbarSlice";
 import { login } from "src/features/user";
 import { useAppDispatch } from "src/store/hooks";
-import getJwtData from "src/utils/getJwtData";
+import { getJwtData } from "src/utils/jwtToken";
 import { loginApi } from "../API";
 
 const useLoginAPI = () => {

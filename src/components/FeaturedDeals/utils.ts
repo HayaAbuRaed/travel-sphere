@@ -2,7 +2,8 @@ import { Hotel } from "src/components/HotelCard/types";
 import { FeaturedDealResponse } from "./API/types";
 
 export const mapDealToHotel = (deal: FeaturedDealResponse): Hotel => {
-  const { roomPhotoUrl, hotelStarRating, ...rest } = deal;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { roomPhotoUrl, hotelStarRating, finalPrice, ...rest } = deal;
 
   return {
     ...rest,
