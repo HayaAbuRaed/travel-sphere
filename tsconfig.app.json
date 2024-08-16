@@ -7,14 +7,15 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    // "baseUrl": "src",
-    // "paths": {
-    //   "src/*": ["*"]
-    // },
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["*"]
     },
+    // "baseUrl": ".",
+    // "paths": {
+    //   "src/*": ["src/*"]
+    // },
+    "types": ["node", "jest", "@testing-library/jest-dom"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

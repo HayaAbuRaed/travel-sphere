@@ -19,7 +19,7 @@ const LoginForm = () => {
           <TextField
             name="userName"
             label="Username"
-            placeholder="e.g, user"
+            placeholder="e.g., user"
             variant="filled"
             color="secondary"
             fullWidth
@@ -28,7 +28,7 @@ const LoginForm = () => {
           <PasswordField
             name="password"
             label="Password"
-            placeholder="e.g, password"
+            placeholder="e.g., password"
             variant="filled"
             color="secondary"
             fullWidth
@@ -43,7 +43,7 @@ const LoginForm = () => {
           startIcon={<LoginIcon />}
           variant="contained"
           loadingPosition="start"
-          aria-label="Login"
+          // aria-label="Log in"
           className={styles.submitButton}
           disableElevation
         >
