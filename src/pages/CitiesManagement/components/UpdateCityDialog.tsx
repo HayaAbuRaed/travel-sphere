@@ -22,20 +22,19 @@ const UpdateCityDialog: FC<UpdateCityDialogProps> = ({
 }) => {
   const { formikProps, isUpdating, updateStatus } = useUpdateCityForm(city);
 
+  useEffect(() => {
+    if (!isUpdating && updateStatus === "success") {
+      handleClose();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdating]);
+
   const { dirty, isValid, resetForm } = formikProps;
 
   const handleClose = () => {
     resetForm();
     onClose();
   };
-
-  useEffect(() => {
-    if (!isUpdating && updateStatus === "success") {
-      resetForm();
-      onClose();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUpdating]);
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth variant="left">

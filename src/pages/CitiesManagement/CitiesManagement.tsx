@@ -60,17 +60,12 @@ const CitiesManagement: FC = () => {
     });
   };
 
-  const handleOpenDeleteDialog = (city: City) => {
-    setSelectedCity(city);
-    setTimeout(() => setOpenDialog(DialogType.DELETE));
+  const handleOpenDialog = (type: DialogType) => {
+    return (city: City | null) => {
+      setOpenDialog(type);
+      setSelectedCity(city);
+    };
   };
-
-  const handleOpenUpdateDialog = (city: City) => {
-    setSelectedCity(city);
-    setOpenDialog(DialogType.UPDATE);
-  };
-
-  const handleOpenAddDialog = () => setOpenDialog(DialogType.ADD);
 
   const handleCloseDialog = () => {
     setOpenDialog(null);
@@ -96,11 +91,11 @@ const CitiesManagement: FC = () => {
             ml={{ sm: "auto" }}
           >
             <Button
-              variant="outlined"
               color="secondary"
-              startIcon={<AddIcon />}
-              onClick={handleOpenAddDialog}
+              variant="outlined"
               sx={{ height: 56 }}
+              startIcon={<AddIcon />}
+              onClick={() => handleOpenDialog(DialogType.ADD)(null)}
             >
               Add City
             </Button>
@@ -146,8 +141,8 @@ const CitiesManagement: FC = () => {
             headers={["id", "name", "description"] as (keyof City)[]}
             loadMore={fetchNextPage}
             hasMore={hasNextPage}
-            onDeletion={handleOpenDeleteDialog}
-            onRowClick={handleOpenUpdateDialog}
+            onDeletion={handleOpenDialog(DialogType.DELETE)}
+            onRowClick={handleOpenDialog(DialogType.UPDATE)}
           />
         )}
       </Grid>

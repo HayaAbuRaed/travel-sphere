@@ -11,22 +11,25 @@ import {
   Stack,
 } from "@mui/material";
 import { Form, FormikProvider } from "formik";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import TextField from "src/components/Fields/TextField";
 import useAddCityForm from "../hooks/useAddCityForm";
 import { AddCityDialogProps } from "../types";
 // import styles from "../styles.module.css";
 
 const AddCityDialog: FC<AddCityDialogProps> = ({ open, onClose }) => {
-  const { formikProps, isAdding } = useAddCityForm();
+  const { formikProps, isAdding, status } = useAddCityForm();
+
+  useEffect(() => {
+    if (!isAdding && status === "success") {
+      handleClose();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAdding]);
 
   const { dirty, isValid, resetForm, submitForm } = formikProps;
 
-  const handleSubmit = async () => {
-    await submitForm();
-    resetForm();
-    onClose();
-  };
+  const handleSubmit = async () => await submitForm();
 
   const handleClose = () => {
     resetForm();
