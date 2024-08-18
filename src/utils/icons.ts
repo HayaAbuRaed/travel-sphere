@@ -8,6 +8,8 @@ import { iconsList } from "src/constants/icons";
  * @returns The matching icon as a ReactElement, or null if no match is found.
  */
 export const getIconByName = (searchString: string): ReactElement | null => {
+  if (!searchString.trim()) return null;
+
   // Normalize the search string to lowercase for case-insensitive comparison
   const words = searchString.toLowerCase().split(" ");
 
@@ -21,6 +23,6 @@ export const getIconByName = (searchString: string): ReactElement | null => {
     }
   }
 
-  // Return null or a default icon if no match is found
+  // Return null if no match is found
   return null;
 };

@@ -12,7 +12,11 @@ const useAddCityAPI = () => {
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
 
-  const { mutate: addCity, isPending } = useMutation({
+  const {
+    mutate: addCity,
+    isPending,
+    status,
+  } = useMutation({
     mutationFn: addCityApi,
 
     onSuccess: (city: City) => {
@@ -44,7 +48,7 @@ const useAddCityAPI = () => {
     },
   });
 
-  return { addCity, isPending };
+  return { addCity, isPending, status };
 };
 
 export default useAddCityAPI;

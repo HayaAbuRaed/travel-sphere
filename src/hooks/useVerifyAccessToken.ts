@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { login, logout } from "src/features/user";
 import { useAppDispatch } from "src/store/hooks";
-import checkTokenExpiration from "src/utils/checkTokenExpiration";
-import getJwtData from "src/utils/getJwtData";
+import { checkTokenExpiration, getJwtData } from "src/utils/jwtToken";
 
 const useVerifyAccessToken = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(true);

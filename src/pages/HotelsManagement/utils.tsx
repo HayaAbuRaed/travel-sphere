@@ -3,7 +3,7 @@ import { Hotel } from "./API/types";
 import Map from "./components/Map";
 import { HotelData } from "./types";
 
-const getLocation = (latitude: number, longitude: number) => {
+export const getLocation = (latitude: number, longitude: number) => {
   if (latitude && longitude)
     return <Map position={[latitude, longitude] as LatLngExpression} />;
 

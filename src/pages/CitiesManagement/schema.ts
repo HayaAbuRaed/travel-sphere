@@ -1,7 +1,9 @@
 import * as Yup from "yup";
-import { AddCityRequest } from "./API/types";
+import { AddCityRequest, UpdateCityRequest } from "./API/types";
 
-export const validationSchema = Yup.object<AddCityRequest>().shape({
+export const validationSchema = Yup.object<
+  AddCityRequest | UpdateCityRequest
+>().shape({
   name: Yup.string().required("Name is required"),
   description: Yup.string().required("Description is required"),
 });

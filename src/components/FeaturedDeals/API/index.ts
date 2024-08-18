@@ -1,4 +1,4 @@
-import axios from "API/axios";
+import axios from "src/API/axios";
 import { FeaturedDealResponse } from "./types";
 
 export const getFeaturedDeals = async () => {

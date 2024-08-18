@@ -10,7 +10,9 @@
     "baseUrl": "src",
     "paths": {
       "src/*": ["*"]
+      // "msw/node": ["node_modules/msw/node"]
     },
+    "types": ["node", "jest", "@testing-library/jest-dom"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -27,6 +29,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]
 }
