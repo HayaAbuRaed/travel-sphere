@@ -5,7 +5,7 @@ import useAddCityAPI from "./useAddCityAPI";
 import { AddCityRequest } from "../API/types";
 
 const useAddCityForm = () => {
-  const { addCity, isPending } = useAddCityAPI();
+  const { addCity, isPending, status } = useAddCityAPI();
 
   const handleSubmit = (values: AddCityRequest) => {
     addCity(values);
@@ -17,7 +17,7 @@ const useAddCityForm = () => {
     onSubmit: handleSubmit,
   });
 
-  return { formikProps, isAdding: isPending };
+  return { formikProps, isAdding: isPending, status };
 };
 
 export default useAddCityForm;

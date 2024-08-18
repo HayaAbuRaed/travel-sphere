@@ -10,11 +10,8 @@
     "baseUrl": "src",
     "paths": {
       "src/*": ["*"]
+      // "msw/node": ["node_modules/msw/node"]
     },
-    // "baseUrl": ".",
-    // "paths": {
-    //   "src/*": ["src/*"]
-    // },
     "types": ["node", "jest", "@testing-library/jest-dom"],
 
     /* Bundler mode */

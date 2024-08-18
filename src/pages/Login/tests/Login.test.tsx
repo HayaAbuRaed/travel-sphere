@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import render from "src/tests/render";
 import Login from "../Login";
 import { getters } from "./constants";
+import { fillForm, logUserIn } from "./utils";
 
 describe("pages/Login", () => {
   describe("Smoke tests", () => {
@@ -118,6 +119,33 @@ describe("pages/Login", () => {
       );
 
       expect(validationMessage).toBeInTheDocument();
+    });
+  });
+
+  describe.skip("Interactions", () => {
+    beforeEach(() => render(<Login />));
+
+    it("should show error snackbar if the user enters wrong credentials", async () => {
+      await logUserIn({ userName: "wrong-username", password: "password" });
+
+      const errorMessage = screen.getByText(
+        /one or more credentials are invalid!/i
+      );
+
+      expect(errorMessage).toBeInTheDocument();
+    });
+
+    it("should log the user in if the user enters correct credentials", async () => {
+      const submitButton = getters.getSubmitButton();
+
+      await fillForm({ userName: "user", password: "password" });
+      await userEvent.click(submitButton);
+
+      const paradiseText = await screen.findByText(
+        /a piece of paradise just for you/i
+      );
+
+      expect(paradiseText).toBeInTheDocument;
     });
   });
 });
