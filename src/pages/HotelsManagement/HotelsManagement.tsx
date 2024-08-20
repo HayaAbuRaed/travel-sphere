@@ -69,22 +69,11 @@ const HotelsManagement: FC = () => {
       value: event.target.value,
     });
   };
-  const handleOpenDialog = (dialogType: DialogType) =>
-    setOpenDialog(dialogType);
-
-  const handleOpenDeleteDialog = (hotel: HotelData) => {
-    setSelectedHotel(hotel);
-    setTimeout(() => {
-      setOpenDialog(DialogType.DELETE);
-    });
-  };
-
-  const handleRowClick = (hotel: HotelData) => {
-    setSelectedHotel(hotel);
-    setTimeout(() => {
-      setOpenDialog(DialogType.UPDATE);
-    });
-  };
+  const handleOpenDialog =
+    (dialogType: DialogType) => (hotel: HotelData | null) => {
+      setSelectedHotel(hotel);
+      setOpenDialog(dialogType);
+    };
 
   const handleCloseDialog = () => {
     setOpenDialog(null);
@@ -111,7 +100,7 @@ const HotelsManagement: FC = () => {
               variant="outlined"
               color="secondary"
               startIcon={<AddIcon />}
-              onClick={() => handleOpenDialog(DialogType.ADD)}
+              onClick={() => handleOpenDialog(DialogType.ADD)(null)}
               sx={{ height: 56 }}
             >
               Add Hotel
@@ -152,8 +141,8 @@ const HotelsManagement: FC = () => {
             headers={headers}
             loadMore={fetchNextPage}
             hasMore={hasNextPage}
-            onDeletion={handleOpenDeleteDialog}
-            onRowClick={handleRowClick}
+            onDeletion={handleOpenDialog(DialogType.DELETE)}
+            onRowClick={handleOpenDialog(DialogType.UPDATE)}
           />
         )}
       </Grid>
