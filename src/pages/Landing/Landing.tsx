@@ -3,12 +3,15 @@ import { FC } from "react";
 import FeaturedDeals from "src/components/FeaturedDeals";
 import SplashScreen from "src/components/SplashScreen";
 import Footer from "src/containers/Footer";
+import useVerifyAccessToken from "src/hooks/useVerifyAccessToken";
+import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import IntroSection from "./components/IntroSection";
 import styles from "./style.module.css";
-import GallerySection from "./components/GallerySection";
 
 const Landing: FC = () => {
+  useVerifyAccessToken();
+
   return (
     <Grid container sx={{ position: "relative", overflowX: "hidden" }}>
       <SplashScreen />

@@ -5,6 +5,9 @@ import home from "src/assets/images/home.png";
 import icon from "src/assets/images/icon2.png";
 import sky from "src/assets/videos/sky.mp4";
 import styles from "../style.module.css";
+import selectUser from "src/features/user/selectors";
+import { useAppSelector } from "src/store/hooks";
+import UserSegment from "src/components/UserSegment";
 
 const ButtonStyling = {
   borderRadius: "10rem",
@@ -18,6 +21,8 @@ const ButtonStyling = {
 
 const HeroSection: FC = () => {
   const navigate = useNavigate();
+
+  const { isAuthenticated } = useAppSelector(selectUser);
 
   const handleLoginClick = () => navigate("/login");
 
@@ -51,23 +56,31 @@ const HeroSection: FC = () => {
         </Typography>
 
         <Stack flexDirection={{ sm: "row" }} gap={0.5} ml="auto">
-          <Button
-            variant="outlined"
-            color="primary"
-            disableElevation
-            sx={ButtonStyling}
-          >
-            Register
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            disableElevation
-            sx={ButtonStyling}
-            onClick={handleLoginClick}
-          >
-            Log in
-          </Button>
+          {isAuthenticated && (
+            <UserSegment size={35} fontcolor="#f5f5f5" includeHomeButton />
+          )}
+
+          {!isAuthenticated && (
+            <>
+              <Button
+                variant="outlined"
+                color="primary"
+                disableElevation
+                sx={ButtonStyling}
+              >
+                Register
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                disableElevation
+                sx={ButtonStyling}
+                onClick={handleLoginClick}
+              >
+                Log in
+              </Button>
+            </>
+          )}
         </Stack>
       </Stack>
 

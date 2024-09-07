@@ -16,7 +16,7 @@ import icon from "src/assets/images/icon.png";
 import { selectCartTotalItems } from "src/features/cart/selectors";
 import { selectIsUserAdmin } from "src/features/user";
 import { useAppSelector } from "src/store/hooks";
-import UserSegment from "./components/UserSegment";
+import UserSegment from "../../components/UserSegment/UserSegment";
 import styles from "./style.module.css";
 import { StyledBadge } from "./styled";
 import { NavbarProps } from "./types";
