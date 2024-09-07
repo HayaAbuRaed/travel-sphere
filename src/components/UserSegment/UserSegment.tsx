@@ -1,3 +1,5 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import HomeIcon from "@mui/icons-material/HomeRounded";
 import LogoutIcon from "@mui/icons-material/Logout";
 import {
   Box,
@@ -16,9 +18,13 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "src/features/user";
 import selectUser from "src/features/user/selectors";
 import { useAppDispatch, useAppSelector } from "src/store/hooks";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { UserSegmentProps } from "./types";
 
-const UserSegment: FC = () => {
+const UserSegment: FC<UserSegmentProps> = ({
+  size = 40,
+  fontcolor,
+  includeHomeButton,
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const dispatch = useAppDispatch();
@@ -46,7 +52,7 @@ const UserSegment: FC = () => {
       border
       borderColor="#ddd"
       borderSize={1}
-      size={40}
+      size={size}
     />
   );
 
@@ -55,7 +61,10 @@ const UserSegment: FC = () => {
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenMenu} sx={{ p: 0 }} disableRipple>
           <UserAvatar />
-          <ExpandMoreIcon fontSize="small" />
+          <ExpandMoreIcon
+            fontSize="small"
+            sx={{ color: fontcolor ?? "inherit" }}
+          />
         </IconButton>
       </Tooltip>
 
@@ -80,6 +89,23 @@ const UserSegment: FC = () => {
             </Stack>
 
             <Divider />
+
+            {includeHomeButton && (
+              <Button
+                startIcon={<HomeIcon />}
+                onClick={() => navigate("/me")}
+                sx={{
+                  color: "GrayText",
+                  ":hover": { color: "text.primary" },
+                  justifyContent: "flex-start",
+                  px: 1,
+                }}
+                size="large"
+                fullWidth
+              >
+                Home
+              </Button>
+            )}
 
             <Button
               startIcon={<LogoutIcon />}

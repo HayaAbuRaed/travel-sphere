@@ -1,8 +1,10 @@
 import { Grid, Stack } from "@mui/material";
 import { FC } from "react";
 import Carousel from "react-multi-carousel";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HotelCard from "src/components/HotelCard";
+import selectUser from "src/features/user/selectors";
+import { useAppSelector } from "src/store/hooks";
 import CarouselSkeleton from "../CarouselSkeleton";
 import "./carousel.css";
 import { featuredDealsCarouselProps } from "./constants";
@@ -14,14 +16,11 @@ const FeaturedDeals: FC = () => {
   const { featuredDeals, isFetching } = useGetFeaturedDeals();
 
   const navigate = useNavigate();
-  const location = useLocation();
+
+  const { isAuthenticated } = useAppSelector(selectUser);
 
   const handleHotelCardAction = (hotelId: number) => {
-    if (!location.pathname.includes("/me")) {
-      navigate(`/login`);
-      return;
-    }
-    navigate(`hotels/${hotelId}`);
+    isAuthenticated ? navigate(`/me/hotels/${hotelId}`) : navigate(`/login`);
   };
 
   return (

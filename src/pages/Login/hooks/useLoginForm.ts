@@ -5,7 +5,7 @@ import validationSchema from "./../schema";
 import useLoginAPI from "./useLoginAPI";
 
 const useLoginForm = () => {
-  const { logUserIn } = useLoginAPI();
+  const { logUserIn, isPending } = useLoginAPI();
 
   const submitForm = (values: LoginFormPayload) => {
     return logUserIn(values);
@@ -17,7 +17,7 @@ const useLoginForm = () => {
     onSubmit: submitForm,
   });
 
-  return formikProps;
+  return { formikProps, isSubmitting: isPending };
 };
 
 export default useLoginForm;

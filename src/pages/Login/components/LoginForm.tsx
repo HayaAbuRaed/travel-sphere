@@ -8,9 +8,9 @@ import styles from "../style.module.css";
 import PasswordField from "src/components/Fields/PasswordField";
 
 const LoginForm = () => {
-  const formikProps = useLoginForm();
+  const { formikProps, isSubmitting } = useLoginForm();
 
-  const { submitForm, isSubmitting, dirty, isValid } = formikProps;
+  const { dirty, isValid } = formikProps;
 
   return (
     <FormikProvider value={formikProps}>
@@ -39,11 +39,10 @@ const LoginForm = () => {
           loading={isSubmitting}
           disabled={!dirty || !isValid}
           type="submit"
-          onClick={submitForm}
           startIcon={<LoginIcon />}
           variant="contained"
           loadingPosition="start"
-          // aria-label="Log in"
+          aria-label="Log in"
           className={styles.submitButton}
           disableElevation
         >
